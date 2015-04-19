@@ -1,5 +1,5 @@
 (*
- * ./main.ml
+ * ./sequences.ml
  * 
  * Sequences V1
  * Guillaume Laliberté
