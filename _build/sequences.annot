@@ -1,0 +1,434 @@
+"sequences.ml" 13 155 159 "sequences.ml" 13 155 166
+type(
+  (bytes * int) list
+)
+ident(
+  def test_sa "sequences.ml" 15 207 207 "sequences.ml" 1 0 -1
+)
+"sequences.ml" 13 155 169 "sequences.ml" 13 155 187
+type(
+  bytes -> (bytes * int) list
+)
+ident(
+  ext_ref SuffixArray.SuffixArray.create
+)
+"sequences.ml" 13 155 188 "sequences.ml" 13 155 205
+type(
+  bytes
+)
+"sequences.ml" 13 155 169 "sequences.ml" 13 155 205
+call(
+  stack
+)
+type(
+  (bytes * int) list
+)
+"sequences.ml" 15 207 215 "sequences.ml" 15 207 227
+type(
+  (bytes * int) list -> bytes
+)
+ident(
+  def string_of_sa "sequences.ml" 15 207 207 "sequences.ml" 1 0 -1
+)
+"sequences.ml" 15 207 229 "sequences.ml" 15 207 234
+type(
+  (bytes * int) list
+)
+ident(
+  def slist "sequences.ml" 15 207 255 "sequences.ml" 19 320 375
+)
+"sequences.ml" 16 266 273 "sequences.ml" 16 266 278
+type(
+  (bytes * int) list
+)
+ident(
+  int_ref slist "sequences.ml" 15 207 229 "sequences.ml" 15 207 234
+)
+"sequences.ml" 17 284 287 "sequences.ml" 17 284 289
+type(
+  (bytes * int) list
+)
+"sequences.ml" 17 284 293 "sequences.ml" 17 284 299
+type(
+  bytes
+)
+"sequences.ml" 18 300 304 "sequences.ml" 18 300 307
+type(
+  bytes
+)
+ident(
+  def str "sequences.ml" 19 320 322 "sequences.ml" 19 320 375
+)
+"sequences.ml" 18 300 309 "sequences.ml" 18 300 310
+type(
+  int
+)
+ident(
+  def i "sequences.ml" 19 320 322 "sequences.ml" 19 320 375
+)
+"sequences.ml" 18 300 304 "sequences.ml" 18 300 310
+type(
+  bytes * int
+)
+"sequences.ml" 18 300 313 "sequences.ml" 18 300 315
+type(
+  (bytes * int) list
+)
+ident(
+  def tl "sequences.ml" 19 320 322 "sequences.ml" 19 320 375
+)
+"sequences.ml" 18 300 303 "sequences.ml" 18 300 315
+type(
+  (bytes * int) list
+)
+"sequences.ml" 19 320 322 "sequences.ml" 19 320 326
+type(
+  bytes
+)
+"sequences.ml" 19 320 327 "sequences.ml" 19 320 328
+type(
+  bytes -> bytes -> bytes
+)
+ident(
+  ext_ref Pervasives.( ^ )
+)
+"sequences.ml" 19 320 329 "sequences.ml" 19 320 342
+type(
+  int -> bytes
+)
+ident(
+  ext_ref Pervasives.string_of_int
+)
+"sequences.ml" 19 320 343 "sequences.ml" 19 320 344
+type(
+  int
+)
+ident(
+  int_ref i "sequences.ml" 18 300 309 "sequences.ml" 18 300 310
+)
+"sequences.ml" 19 320 329 "sequences.ml" 19 320 344
+call(
+  stack
+)
+type(
+  bytes
+)
+"sequences.ml" 19 320 345 "sequences.ml" 19 320 346
+type(
+  bytes -> bytes -> bytes
+)
+ident(
+  ext_ref Pervasives.( ^ )
+)
+"sequences.ml" 19 320 347 "sequences.ml" 19 320 351
+type(
+  bytes
+)
+"sequences.ml" 19 320 352 "sequences.ml" 19 320 353
+type(
+  bytes -> bytes -> bytes
+)
+ident(
+  ext_ref Pervasives.( ^ )
+)
+"sequences.ml" 19 320 354 "sequences.ml" 19 320 357
+type(
+  bytes
+)
+ident(
+  int_ref str "sequences.ml" 18 300 304 "sequences.ml" 18 300 307
+)
+"sequences.ml" 19 320 358 "sequences.ml" 19 320 359
+type(
+  bytes -> bytes -> bytes
+)
+ident(
+  ext_ref Pervasives.( ^ )
+)
+"sequences.ml" 19 320 360 "sequences.ml" 19 320 372
+type(
+  (bytes * int) list -> bytes
+)
+ident(
+  int_ref string_of_sa "sequences.ml" 15 207 215 "sequences.ml" 15 207 227
+)
+"sequences.ml" 19 320 373 "sequences.ml" 19 320 375
+type(
+  (bytes * int) list
+)
+ident(
+  int_ref tl "sequences.ml" 18 300 313 "sequences.ml" 18 300 315
+)
+"sequences.ml" 19 320 360 "sequences.ml" 19 320 375
+call(
+  stack
+)
+type(
+  bytes
+)
+"sequences.ml" 19 320 354 "sequences.ml" 19 320 375
+call(
+  stack
+)
+type(
+  bytes
+)
+"sequences.ml" 19 320 347 "sequences.ml" 19 320 375
+call(
+  stack
+)
+type(
+  bytes
+)
+"sequences.ml" 19 320 329 "sequences.ml" 19 320 375
+call(
+  stack
+)
+type(
+  bytes
+)
+"sequences.ml" 19 320 322 "sequences.ml" 19 320 375
+call(
+  tail
+)
+type(
+  bytes
+)
+"sequences.ml" 16 266 267 "sequences.ml" 19 320 375
+type(
+  bytes
+)
+type(
+  bytes
+)
+"sequences.ml" 15 207 228 "sequences.ml" 19 320 375
+type(
+  (bytes * int) list -> bytes
+)
+"sequences.ml" 22 380 380 "sequences.ml" 22 380 392
+type(
+  bytes -> unit
+)
+ident(
+  ext_ref Pervasives.print_string
+)
+"sequences.ml" 22 380 394 "sequences.ml" 22 380 406
+type(
+  (bytes * int) list -> bytes
+)
+ident(
+  int_ref string_of_sa "sequences.ml" 15 207 215 "sequences.ml" 15 207 227
+)
+"sequences.ml" 22 380 407 "sequences.ml" 22 380 414
+type(
+  (bytes * int) list
+)
+ident(
+  int_ref test_sa "sequences.ml" 13 155 159 "sequences.ml" 13 155 166
+)
+"sequences.ml" 22 380 394 "sequences.ml" 22 380 414
+call(
+  stack
+)
+type(
+  bytes
+)
+"sequences.ml" 22 380 380 "sequences.ml" 22 380 415
+call(
+  stack
+)
+type(
+  unit
+)
+"sequences.ml" 24 419 423 "sequences.ml" 24 419 439
+type(
+  (bytes * int) list -> bytes
+)
+ident(
+  def string_of_result "sequences.ml" 30 615 615 "sequences.ml" 1 0 -1
+)
+"sequences.ml" 24 419 441 "sequences.ml" 24 419 446
+type(
+  (bytes * int) list
+)
+ident(
+  def slist "sequences.ml" 24 419 467 "sequences.ml" 27 553 610
+)
+"sequences.ml" 25 479 486 "sequences.ml" 25 479 504
+type(
+  bytes -> (bytes * int) list -> (bytes * int) option
+)
+ident(
+  ext_ref SuffixArray.SuffixArray.search
+)
+"sequences.ml" 25 479 505 "sequences.ml" 25 479 512
+type(
+  bytes
+)
+"sequences.ml" 25 479 513 "sequences.ml" 25 479 518
+type(
+  (bytes * int) list
+)
+ident(
+  int_ref slist "sequences.ml" 24 419 441 "sequences.ml" 24 419 446
+)
+"sequences.ml" 25 479 486 "sequences.ml" 25 479 518
+call(
+  stack
+)
+type(
+  (bytes * int) option
+)
+"sequences.ml" 26 524 527 "sequences.ml" 26 524 531
+type(
+  (bytes * int) option
+)
+"sequences.ml" 26 524 535 "sequences.ml" 26 524 552
+type(
+  bytes
+)
+"sequences.ml" 27 553 562 "sequences.ml" 27 553 565
+type(
+  bytes
+)
+ident(
+  def str "sequences.ml" 27 553 574 "sequences.ml" 27 553 609
+)
+"sequences.ml" 27 553 567 "sequences.ml" 27 553 568
+type(
+  int
+)
+ident(
+  def i "sequences.ml" 27 553 574 "sequences.ml" 27 553 609
+)
+"sequences.ml" 27 553 556 "sequences.ml" 27 553 569
+type(
+  (bytes * int) option
+)
+type(
+  bytes * int
+)
+"sequences.ml" 27 553 574 "sequences.ml" 27 553 578
+type(
+  bytes
+)
+"sequences.ml" 27 553 579 "sequences.ml" 27 553 580
+type(
+  bytes -> bytes -> bytes
+)
+ident(
+  ext_ref Pervasives.( ^ )
+)
+"sequences.ml" 27 553 581 "sequences.ml" 27 553 594
+type(
+  int -> bytes
+)
+ident(
+  ext_ref Pervasives.string_of_int
+)
+"sequences.ml" 27 553 595 "sequences.ml" 27 553 596
+type(
+  int
+)
+ident(
+  int_ref i "sequences.ml" 27 553 567 "sequences.ml" 27 553 568
+)
+"sequences.ml" 27 553 581 "sequences.ml" 27 553 596
+call(
+  stack
+)
+type(
+  bytes
+)
+"sequences.ml" 27 553 597 "sequences.ml" 27 553 598
+type(
+  bytes -> bytes -> bytes
+)
+ident(
+  ext_ref Pervasives.( ^ )
+)
+"sequences.ml" 27 553 599 "sequences.ml" 27 553 603
+type(
+  bytes
+)
+"sequences.ml" 27 553 604 "sequences.ml" 27 553 605
+type(
+  bytes -> bytes -> bytes
+)
+ident(
+  ext_ref Pervasives.( ^ )
+)
+"sequences.ml" 27 553 606 "sequences.ml" 27 553 609
+type(
+  bytes
+)
+ident(
+  int_ref str "sequences.ml" 27 553 562 "sequences.ml" 27 553 565
+)
+"sequences.ml" 27 553 599 "sequences.ml" 27 553 609
+call(
+  stack
+)
+type(
+  bytes
+)
+"sequences.ml" 27 553 581 "sequences.ml" 27 553 609
+call(
+  stack
+)
+type(
+  bytes
+)
+"sequences.ml" 27 553 574 "sequences.ml" 27 553 609
+call(
+  tail
+)
+type(
+  bytes
+)
+"sequences.ml" 25 479 480 "sequences.ml" 27 553 610
+type(
+  bytes
+)
+type(
+  bytes
+)
+"sequences.ml" 24 419 440 "sequences.ml" 27 553 610
+type(
+  (bytes * int) list -> bytes
+)
+"sequences.ml" 30 615 615 "sequences.ml" 30 615 627
+type(
+  bytes -> unit
+)
+ident(
+  ext_ref Pervasives.print_string
+)
+"sequences.ml" 30 615 629 "sequences.ml" 30 615 645
+type(
+  (bytes * int) list -> bytes
+)
+ident(
+  int_ref string_of_result "sequences.ml" 24 419 423 "sequences.ml" 24 419 439
+)
+"sequences.ml" 30 615 646 "sequences.ml" 30 615 653
+type(
+  (bytes * int) list
+)
+ident(
+  int_ref test_sa "sequences.ml" 13 155 159 "sequences.ml" 13 155 166
+)
+"sequences.ml" 30 615 629 "sequences.ml" 30 615 653
+call(
+  stack
+)
+type(
+  bytes
+)
+"sequences.ml" 30 615 615 "sequences.ml" 30 615 654
+call(
+  stack
+)
+type(
+  unit
+)

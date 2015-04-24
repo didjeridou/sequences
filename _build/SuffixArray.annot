@@ -1,0 +1,1109 @@
+"SuffixArray.ml" 24 424 429 "SuffixArray.ml" 24 424 437
+type(
+  (bytes * int) list -> bool
+)
+ident(
+  def is_empty "SuffixArray.ml" 34 639 640 "SuffixArray.ml" 77 1848 1851
+)
+"SuffixArray.ml" 24 424 439 "SuffixArray.ml" 24 424 442
+type(
+  (bytes * int) list
+)
+ident(
+  def lst "SuffixArray.ml" 24 424 465 "SuffixArray.ml" 27 506 520
+)
+"SuffixArray.ml" 25 474 482 "SuffixArray.ml" 25 474 485
+type(
+  (bytes * int) list
+)
+ident(
+  int_ref lst "SuffixArray.ml" 24 424 439 "SuffixArray.ml" 24 424 442
+)
+"SuffixArray.ml" 26 491 495 "SuffixArray.ml" 26 491 497
+type(
+  (bytes * int) list
+)
+"SuffixArray.ml" 26 491 501 "SuffixArray.ml" 26 491 505
+type(
+  bool
+)
+"SuffixArray.ml" 27 506 510 "SuffixArray.ml" 27 506 511
+type(
+  (bytes * int) list
+)
+"SuffixArray.ml" 27 506 515 "SuffixArray.ml" 27 506 520
+type(
+  bool
+)
+"SuffixArray.ml" 25 474 476 "SuffixArray.ml" 27 506 520
+type(
+  bool
+)
+type(
+  bool
+)
+"SuffixArray.ml" 24 424 438 "SuffixArray.ml" 27 506 520
+type(
+  (bytes * int) list -> bool
+)
+"SuffixArray.ml" 34 639 648 "SuffixArray.ml" 34 639 660
+type(
+  bytes -> int -> (bytes * int) list
+)
+ident(
+  def toSuffixList "SuffixArray.ml" 34 639 640 "SuffixArray.ml" 77 1848 1851
+)
+"SuffixArray.ml" 34 639 662 "SuffixArray.ml" 34 639 665
+type(
+  bytes
+)
+ident(
+  def str "SuffixArray.ml" 34 639 675 "SuffixArray.ml" 38 806 863
+)
+"SuffixArray.ml" 34 639 676 "SuffixArray.ml" 34 639 681
+type(
+  int
+)
+ident(
+  def index "SuffixArray.ml" 34 639 688 "SuffixArray.ml" 38 806 863
+)
+"SuffixArray.ml" 35 710 715 "SuffixArray.ml" 35 710 730
+type(
+  bytes -> bool
+)
+ident(
+  ext_ref Core.Std.String.is_empty
+)
+"SuffixArray.ml" 35 710 731 "SuffixArray.ml" 35 710 734
+type(
+  bytes
+)
+ident(
+  int_ref str "SuffixArray.ml" 34 639 662 "SuffixArray.ml" 34 639 665
+)
+"SuffixArray.ml" 35 710 715 "SuffixArray.ml" 35 710 734
+call(
+  stack
+)
+type(
+  bool
+)
+"SuffixArray.ml" 35 710 742 "SuffixArray.ml" 35 710 745
+type(
+  bytes
+)
+"SuffixArray.ml" 35 710 747 "SuffixArray.ml" 35 710 752
+type(
+  int
+)
+ident(
+  int_ref index "SuffixArray.ml" 34 639 676 "SuffixArray.ml" 34 639 681
+)
+"SuffixArray.ml" 35 710 742 "SuffixArray.ml" 35 710 752
+type(
+  bytes * int
+)
+"SuffixArray.ml" 35 710 741 "SuffixArray.ml" 35 710 753
+type(
+  (bytes * int) list
+)
+"SuffixArray.ml" 35 710 740 "SuffixArray.ml" 35 710 754
+type(
+  (bytes * int) list
+)
+"SuffixArray.ml" 37 762 769 "SuffixArray.ml" 37 762 775
+type(
+  bytes
+)
+ident(
+  def suffix "SuffixArray.ml" 38 806 810 "SuffixArray.ml" 38 806 863
+)
+"SuffixArray.ml" 37 762 778 "SuffixArray.ml" 37 762 796
+type(
+  bytes -> int -> bytes
+)
+ident(
+  ext_ref Core.Std.String.drop_prefix
+)
+"SuffixArray.ml" 37 762 797 "SuffixArray.ml" 37 762 800
+type(
+  bytes
+)
+ident(
+  int_ref str "SuffixArray.ml" 34 639 662 "SuffixArray.ml" 34 639 665
+)
+"SuffixArray.ml" 37 762 801 "SuffixArray.ml" 37 762 802
+type(
+  int
+)
+"SuffixArray.ml" 37 762 778 "SuffixArray.ml" 37 762 802
+call(
+  stack
+)
+type(
+  bytes
+)
+"SuffixArray.ml" 38 806 811 "SuffixArray.ml" 38 806 814
+type(
+  bytes
+)
+ident(
+  int_ref str "SuffixArray.ml" 34 639 662 "SuffixArray.ml" 34 639 665
+)
+"SuffixArray.ml" 38 806 814 "SuffixArray.ml" 38 806 815
+type(
+  bytes -> bytes -> bytes
+)
+ident(
+  ext_ref Pervasives.( ^ )
+)
+"SuffixArray.ml" 38 806 815 "SuffixArray.ml" 38 806 818
+type(
+  bytes
+)
+"SuffixArray.ml" 38 806 811 "SuffixArray.ml" 38 806 818
+call(
+  stack
+)
+type(
+  bytes
+)
+"SuffixArray.ml" 38 806 820 "SuffixArray.ml" 38 806 825
+type(
+  int
+)
+ident(
+  int_ref index "SuffixArray.ml" 34 639 676 "SuffixArray.ml" 34 639 681
+)
+"SuffixArray.ml" 38 806 811 "SuffixArray.ml" 38 806 825
+type(
+  bytes * int
+)
+"SuffixArray.ml" 38 806 831 "SuffixArray.ml" 38 806 843
+type(
+  bytes -> int -> (bytes * int) list
+)
+ident(
+  int_ref toSuffixList "SuffixArray.ml" 34 639 648 "SuffixArray.ml" 34 639 660
+)
+"SuffixArray.ml" 38 806 844 "SuffixArray.ml" 38 806 850
+type(
+  bytes
+)
+ident(
+  int_ref suffix "SuffixArray.ml" 37 762 769 "SuffixArray.ml" 37 762 775
+)
+"SuffixArray.ml" 38 806 852 "SuffixArray.ml" 38 806 857
+type(
+  int
+)
+ident(
+  int_ref index "SuffixArray.ml" 34 639 676 "SuffixArray.ml" 34 639 681
+)
+"SuffixArray.ml" 38 806 858 "SuffixArray.ml" 38 806 859
+type(
+  int -> int -> int
+)
+ident(
+  ext_ref Pervasives.( + )
+)
+"SuffixArray.ml" 38 806 860 "SuffixArray.ml" 38 806 861
+type(
+  int
+)
+"SuffixArray.ml" 38 806 852 "SuffixArray.ml" 38 806 861
+type(
+  int
+)
+"SuffixArray.ml" 38 806 831 "SuffixArray.ml" 38 806 862
+call(
+  stack
+)
+type(
+  (bytes * int) list
+)
+"SuffixArray.ml" 38 806 810 "SuffixArray.ml" 38 806 863
+type(
+  (bytes * int) list
+)
+"SuffixArray.ml" 37 762 765 "SuffixArray.ml" 38 806 863
+type(
+  (bytes * int) list
+)
+"SuffixArray.ml" 35 710 712 "SuffixArray.ml" 38 806 863
+type(
+  (bytes * int) list
+)
+type(
+  (bytes * int) list
+)
+"SuffixArray.ml" 34 639 675 "SuffixArray.ml" 38 806 863
+type(
+  int -> (bytes * int) list
+)
+"SuffixArray.ml" 34 639 661 "SuffixArray.ml" 38 806 863
+type(
+  bytes -> int -> (bytes * int) list
+)
+"SuffixArray.ml" 40 865 874 "SuffixArray.ml" 40 865 881
+type(
+  'a list -> int -> int -> 'a list
+)
+ident(
+  def sublist "SuffixArray.ml" 40 865 866 "SuffixArray.ml" 77 1848 1851
+)
+"SuffixArray.ml" 40 865 882 "SuffixArray.ml" 40 865 885
+type(
+  'a list
+)
+ident(
+  def lst "SuffixArray.ml" 40 865 886 "SuffixArray.ml" 49 1113 1133
+)
+"SuffixArray.ml" 40 865 887 "SuffixArray.ml" 40 865 891
+type(
+  int
+)
+ident(
+  def from "SuffixArray.ml" 40 865 898 "SuffixArray.ml" 49 1113 1133
+)
+"SuffixArray.ml" 40 865 899 "SuffixArray.ml" 40 865 904
+type(
+  int
+)
+ident(
+  def toend "SuffixArray.ml" 41 914 918 "SuffixArray.ml" 49 1113 1133
+)
+"SuffixArray.ml" 41 914 924 "SuffixArray.ml" 41 914 927
+type(
+  'a list
+)
+ident(
+  int_ref lst "SuffixArray.ml" 40 865 882 "SuffixArray.ml" 40 865 885
+)
+"SuffixArray.ml" 42 933 939 "SuffixArray.ml" 42 933 941
+type(
+  'a list
+)
+"SuffixArray.ml" 42 933 945 "SuffixArray.ml" 42 933 953
+type(
+  bytes -> 'a list
+)
+ident(
+  ext_ref Pervasives.failwith
+)
+"SuffixArray.ml" 42 933 954 "SuffixArray.ml" 42 933 963
+type(
+  bytes
+)
+"SuffixArray.ml" 42 933 945 "SuffixArray.ml" 42 933 963
+call(
+  tail
+)
+type(
+  'a list
+)
+"SuffixArray.ml" 43 964 970 "SuffixArray.ml" 43 964 972
+type(
+  'a
+)
+ident(
+  def hd "SuffixArray.ml" 44 981 987 "SuffixArray.ml" 49 1113 1133
+)
+"SuffixArray.ml" 43 964 974 "SuffixArray.ml" 43 964 976
+type(
+  'a list
+)
+ident(
+  def tl "SuffixArray.ml" 44 981 987 "SuffixArray.ml" 49 1113 1133
+)
+"SuffixArray.ml" 43 964 970 "SuffixArray.ml" 43 964 976
+type(
+  'a list
+)
+"SuffixArray.ml" 44 981 991 "SuffixArray.ml" 44 981 995
+type(
+  'a list
+)
+ident(
+  def tail "SuffixArray.ml" 48 1083 1090 "SuffixArray.ml" 49 1113 1133
+)
+"SuffixArray.ml" 45 999 1009 "SuffixArray.ml" 45 999 1014
+type(
+  int
+)
+ident(
+  int_ref toend "SuffixArray.ml" 40 865 899 "SuffixArray.ml" 40 865 904
+)
+"SuffixArray.ml" 45 999 1015 "SuffixArray.ml" 45 999 1016
+type(
+  int -> int -> bool
+)
+ident(
+  ext_ref Pervasives.( = )
+)
+"SuffixArray.ml" 45 999 1017 "SuffixArray.ml" 45 999 1018
+type(
+  int
+)
+"SuffixArray.ml" 45 999 1009 "SuffixArray.ml" 45 999 1018
+type(
+  bool
+)
+"SuffixArray.ml" 45 999 1024 "SuffixArray.ml" 45 999 1026
+type(
+  'a list
+)
+"SuffixArray.ml" 46 1028 1040 "SuffixArray.ml" 46 1028 1047
+type(
+  'a list -> int -> int -> 'a list
+)
+ident(
+  int_ref sublist "SuffixArray.ml" 40 865 874 "SuffixArray.ml" 40 865 881
+)
+"SuffixArray.ml" 46 1028 1048 "SuffixArray.ml" 46 1028 1050
+type(
+  'a list
+)
+ident(
+  int_ref tl "SuffixArray.ml" 43 964 974 "SuffixArray.ml" 43 964 976
+)
+"SuffixArray.ml" 46 1028 1052 "SuffixArray.ml" 46 1028 1056
+type(
+  int
+)
+ident(
+  int_ref from "SuffixArray.ml" 40 865 887 "SuffixArray.ml" 40 865 891
+)
+"SuffixArray.ml" 46 1028 1057 "SuffixArray.ml" 46 1028 1058
+type(
+  int -> int -> int
+)
+ident(
+  ext_ref Pervasives.( - )
+)
+"SuffixArray.ml" 46 1028 1059 "SuffixArray.ml" 46 1028 1060
+type(
+  int
+)
+"SuffixArray.ml" 46 1028 1052 "SuffixArray.ml" 46 1028 1060
+type(
+  int
+)
+"SuffixArray.ml" 46 1028 1063 "SuffixArray.ml" 46 1028 1068
+type(
+  int
+)
+ident(
+  int_ref toend "SuffixArray.ml" 40 865 899 "SuffixArray.ml" 40 865 904
+)
+"SuffixArray.ml" 46 1028 1069 "SuffixArray.ml" 46 1028 1070
+type(
+  int -> int -> int
+)
+ident(
+  ext_ref Pervasives.( - )
+)
+"SuffixArray.ml" 46 1028 1071 "SuffixArray.ml" 46 1028 1072
+type(
+  int
+)
+"SuffixArray.ml" 46 1028 1063 "SuffixArray.ml" 46 1028 1072
+type(
+  int
+)
+"SuffixArray.ml" 46 1028 1040 "SuffixArray.ml" 46 1028 1073
+call(
+  stack
+)
+type(
+  'a list
+)
+"SuffixArray.ml" 45 999 1006 "SuffixArray.ml" 46 1028 1073
+type(
+  'a list
+)
+"SuffixArray.ml" 48 1083 1093 "SuffixArray.ml" 48 1083 1097
+type(
+  int
+)
+ident(
+  int_ref from "SuffixArray.ml" 40 865 887 "SuffixArray.ml" 40 865 891
+)
+"SuffixArray.ml" 48 1083 1098 "SuffixArray.ml" 48 1083 1099
+type(
+  int -> int -> bool
+)
+ident(
+  ext_ref Pervasives.( > )
+)
+"SuffixArray.ml" 48 1083 1100 "SuffixArray.ml" 48 1083 1101
+type(
+  int
+)
+"SuffixArray.ml" 48 1083 1093 "SuffixArray.ml" 48 1083 1101
+type(
+  bool
+)
+"SuffixArray.ml" 48 1083 1107 "SuffixArray.ml" 48 1083 1111
+type(
+  'a list
+)
+ident(
+  int_ref tail "SuffixArray.ml" 44 981 991 "SuffixArray.ml" 44 981 995
+)
+"SuffixArray.ml" 49 1113 1125 "SuffixArray.ml" 49 1113 1127
+type(
+  'a
+)
+ident(
+  int_ref hd "SuffixArray.ml" 43 964 970 "SuffixArray.ml" 43 964 972
+)
+"SuffixArray.ml" 49 1113 1129 "SuffixArray.ml" 49 1113 1133
+type(
+  'a list
+)
+ident(
+  int_ref tail "SuffixArray.ml" 44 981 991 "SuffixArray.ml" 44 981 995
+)
+"SuffixArray.ml" 49 1113 1125 "SuffixArray.ml" 49 1113 1133
+type(
+  'a list
+)
+"SuffixArray.ml" 48 1083 1090 "SuffixArray.ml" 49 1113 1133
+type(
+  'a list
+)
+"SuffixArray.ml" 44 981 987 "SuffixArray.ml" 49 1113 1133
+type(
+  'a list
+)
+"SuffixArray.ml" 41 914 918 "SuffixArray.ml" 49 1113 1133
+type(
+  'a list
+)
+"SuffixArray.ml" 40 865 898 "SuffixArray.ml" 49 1113 1133
+type(
+  int -> 'a list
+)
+"SuffixArray.ml" 40 865 886 "SuffixArray.ml" 49 1113 1133
+type(
+  int -> int -> 'a list
+)
+"SuffixArray.ml" 40 865 882 "SuffixArray.ml" 49 1113 1133
+type(
+  'a list -> int -> int -> 'a list
+)
+"SuffixArray.ml" 56 1201 1210 "SuffixArray.ml" 56 1201 1216
+type(
+  bytes -> (bytes * int) list
+)
+ident(
+  def create "SuffixArray.ml" 56 1201 1202 "SuffixArray.ml" 77 1848 1851
+)
+"SuffixArray.ml" 56 1201 1218 "SuffixArray.ml" 56 1201 1221
+type(
+  bytes
+)
+ident(
+  def str "SuffixArray.ml" 56 1201 1231 "SuffixArray.ml" 57 1255 1295
+)
+"SuffixArray.ml" 57 1255 1257 "SuffixArray.ml" 57 1255 1266
+type(
+  cmp:(bytes * int -> bytes * int -> int) ->
+  (bytes * int) list -> (bytes * int) list
+)
+ident(
+  ext_ref Core.Std.List.sort
+)
+"SuffixArray.ml" 57 1255 1267 "SuffixArray.ml" 57 1255 1274
+type(
+  bytes * int -> bytes * int -> int
+)
+ident(
+  ext_ref Pervasives.compare
+)
+"SuffixArray.ml" 57 1255 1276 "SuffixArray.ml" 57 1255 1288
+type(
+  bytes -> int -> (bytes * int) list
+)
+ident(
+  int_ref toSuffixList "SuffixArray.ml" 34 639 648 "SuffixArray.ml" 34 639 660
+)
+"SuffixArray.ml" 57 1255 1289 "SuffixArray.ml" 57 1255 1292
+type(
+  bytes
+)
+ident(
+  int_ref str "SuffixArray.ml" 56 1201 1218 "SuffixArray.ml" 56 1201 1221
+)
+"SuffixArray.ml" 57 1255 1293 "SuffixArray.ml" 57 1255 1294
+type(
+  int
+)
+"SuffixArray.ml" 57 1255 1276 "SuffixArray.ml" 57 1255 1294
+call(
+  stack
+)
+type(
+  (bytes * int) list
+)
+"SuffixArray.ml" 57 1255 1257 "SuffixArray.ml" 57 1255 1295
+call(
+  tail
+)
+type(
+  (bytes * int) list
+)
+type(
+  (bytes * int) list
+)
+"SuffixArray.ml" 56 1201 1217 "SuffixArray.ml" 57 1255 1295
+type(
+  bytes -> (bytes * int) list
+)
+"SuffixArray.ml" 59 1297 1306 "SuffixArray.ml" 59 1297 1312
+type(
+  bytes -> (bytes * int) list -> (bytes * int) option
+)
+ident(
+  def search "SuffixArray.ml" 59 1297 1298 "SuffixArray.ml" 77 1848 1851
+)
+"SuffixArray.ml" 59 1297 1314 "SuffixArray.ml" 59 1297 1318
+type(
+  bytes
+)
+ident(
+  def patt "SuffixArray.ml" 59 1297 1328 "SuffixArray.ml" 75 1836 1846
+)
+"SuffixArray.ml" 59 1297 1329 "SuffixArray.ml" 59 1297 1331
+type(
+  (bytes * int) list
+)
+ident(
+  def sa "SuffixArray.ml" 59 1297 1354 "SuffixArray.ml" 75 1836 1846
+)
+"SuffixArray.ml" 60 1380 1390 "SuffixArray.ml" 60 1380 1392
+type(
+  (bytes * 'b) list -> (bytes * 'b) option
+)
+ident(
+  def bs "SuffixArray.ml" 60 1380 1382 "SuffixArray.ml" 75 1836 1846
+)
+"SuffixArray.ml" 60 1380 1393 "SuffixArray.ml" 60 1380 1395
+type(
+  (bytes * 'b) list
+)
+ident(
+  def sa "SuffixArray.ml" 61 1398 1401 "SuffixArray.ml" 74 1796 1835
+)
+"SuffixArray.ml" 61 1398 1405 "SuffixArray.ml" 61 1398 1411
+type(
+  int
+)
+ident(
+  def length "SuffixArray.ml" 62 1432 1435 "SuffixArray.ml" 74 1796 1835
+)
+"SuffixArray.ml" 61 1398 1414 "SuffixArray.ml" 61 1398 1425
+type(
+  (bytes * 'b) list -> int
+)
+ident(
+  ext_ref Core.Std.List.length
+)
+"SuffixArray.ml" 61 1398 1426 "SuffixArray.ml" 61 1398 1428
+type(
+  (bytes * 'b) list
+)
+ident(
+  int_ref sa "SuffixArray.ml" 60 1380 1393 "SuffixArray.ml" 60 1380 1395
+)
+"SuffixArray.ml" 61 1398 1414 "SuffixArray.ml" 61 1398 1428
+call(
+  stack
+)
+type(
+  int
+)
+"SuffixArray.ml" 62 1432 1439 "SuffixArray.ml" 62 1432 1442
+type(
+  int
+)
+ident(
+  def mid "SuffixArray.ml" 63 1461 1465 "SuffixArray.ml" 74 1796 1835
+)
+"SuffixArray.ml" 62 1432 1446 "SuffixArray.ml" 62 1432 1452
+type(
+  int
+)
+ident(
+  int_ref length "SuffixArray.ml" 61 1398 1405 "SuffixArray.ml" 61 1398 1411
+)
+"SuffixArray.ml" 62 1432 1453 "SuffixArray.ml" 62 1432 1454
+type(
+  int -> int -> int
+)
+ident(
+  ext_ref Pervasives.( / )
+)
+"SuffixArray.ml" 62 1432 1455 "SuffixArray.ml" 62 1432 1456
+type(
+  int
+)
+"SuffixArray.ml" 62 1432 1446 "SuffixArray.ml" 62 1432 1456
+type(
+  int
+)
+"SuffixArray.ml" 63 1461 1471 "SuffixArray.ml" 63 1461 1479
+type(
+  (bytes * 'b) list -> int -> (bytes * 'b) option
+)
+ident(
+  ext_ref Core.Std.List.nth
+)
+"SuffixArray.ml" 63 1461 1480 "SuffixArray.ml" 63 1461 1482
+type(
+  (bytes * 'b) list
+)
+ident(
+  int_ref sa "SuffixArray.ml" 60 1380 1393 "SuffixArray.ml" 60 1380 1395
+)
+"SuffixArray.ml" 63 1461 1483 "SuffixArray.ml" 63 1461 1486
+type(
+  int
+)
+ident(
+  int_ref mid "SuffixArray.ml" 62 1432 1439 "SuffixArray.ml" 62 1432 1442
+)
+"SuffixArray.ml" 63 1461 1471 "SuffixArray.ml" 63 1461 1486
+call(
+  stack
+)
+type(
+  (bytes * 'b) option
+)
+"SuffixArray.ml" 64 1492 1498 "SuffixArray.ml" 64 1492 1502
+type(
+  (bytes * 'b) option
+)
+"SuffixArray.ml" 64 1492 1506 "SuffixArray.ml" 64 1492 1510
+type(
+  (bytes * 'b) option
+)
+"SuffixArray.ml" 65 1511 1523 "SuffixArray.ml" 65 1511 1526
+type(
+  bytes
+)
+ident(
+  def str "SuffixArray.ml" 66 1539 1544 "SuffixArray.ml" 74 1796 1835
+)
+"SuffixArray.ml" 65 1511 1528 "SuffixArray.ml" 65 1511 1533
+type(
+  'b
+)
+ident(
+  def index "SuffixArray.ml" 66 1539 1544 "SuffixArray.ml" 74 1796 1835
+)
+"SuffixArray.ml" 65 1511 1517 "SuffixArray.ml" 65 1511 1534
+type(
+  (bytes * 'b) option
+)
+type(
+  bytes * 'b
+)
+"SuffixArray.ml" 66 1539 1544 "SuffixArray.ml" 66 1539 1550
+type(
+  unit -> unit
+)
+ident(
+  ext_ref Pervasives.ignore
+)
+"SuffixArray.ml" 66 1539 1552 "SuffixArray.ml" 66 1539 1564
+type(
+  bytes -> unit
+)
+ident(
+  ext_ref Pervasives.print_string
+)
+"SuffixArray.ml" 66 1539 1565 "SuffixArray.ml" 66 1539 1569
+type(
+  bytes
+)
+ident(
+  int_ref patt "SuffixArray.ml" 59 1297 1314 "SuffixArray.ml" 59 1297 1318
+)
+"SuffixArray.ml" 66 1539 1552 "SuffixArray.ml" 66 1539 1569
+call(
+  stack
+)
+type(
+  unit
+)
+"SuffixArray.ml" 66 1539 1544 "SuffixArray.ml" 66 1539 1570
+type(
+  unit
+)
+"SuffixArray.ml" 67 1572 1577 "SuffixArray.ml" 67 1572 1583
+type(
+  unit -> unit
+)
+ident(
+  ext_ref Pervasives.ignore
+)
+"SuffixArray.ml" 67 1572 1585 "SuffixArray.ml" 67 1572 1597
+type(
+  bytes -> unit
+)
+ident(
+  ext_ref Pervasives.print_string
+)
+"SuffixArray.ml" 67 1572 1598 "SuffixArray.ml" 67 1572 1601
+type(
+  bytes
+)
+ident(
+  int_ref str "SuffixArray.ml" 65 1511 1523 "SuffixArray.ml" 65 1511 1526
+)
+"SuffixArray.ml" 67 1572 1585 "SuffixArray.ml" 67 1572 1601
+call(
+  stack
+)
+type(
+  unit
+)
+"SuffixArray.ml" 67 1572 1577 "SuffixArray.ml" 67 1572 1602
+type(
+  unit
+)
+"SuffixArray.ml" 68 1604 1609 "SuffixArray.ml" 68 1604 1615
+type(
+  unit -> unit
+)
+ident(
+  ext_ref Pervasives.ignore
+)
+"SuffixArray.ml" 68 1604 1617 "SuffixArray.ml" 68 1604 1626
+type(
+  int -> unit
+)
+ident(
+  ext_ref Pervasives.print_int
+)
+"SuffixArray.ml" 68 1604 1628 "SuffixArray.ml" 68 1604 1635
+type(
+  bytes -> bytes -> int
+)
+ident(
+  ext_ref Pervasives.compare
+)
+"SuffixArray.ml" 68 1604 1636 "SuffixArray.ml" 68 1604 1640
+type(
+  bytes
+)
+ident(
+  int_ref patt "SuffixArray.ml" 59 1297 1314 "SuffixArray.ml" 59 1297 1318
+)
+"SuffixArray.ml" 68 1604 1641 "SuffixArray.ml" 68 1604 1644
+type(
+  bytes
+)
+ident(
+  int_ref str "SuffixArray.ml" 65 1511 1523 "SuffixArray.ml" 65 1511 1526
+)
+"SuffixArray.ml" 68 1604 1628 "SuffixArray.ml" 68 1604 1644
+type(
+  int
+)
+"SuffixArray.ml" 68 1604 1617 "SuffixArray.ml" 68 1604 1645
+call(
+  stack
+)
+type(
+  unit
+)
+"SuffixArray.ml" 68 1604 1609 "SuffixArray.ml" 68 1604 1646
+type(
+  unit
+)
+"SuffixArray.ml" 69 1648 1657 "SuffixArray.ml" 69 1648 1662
+type(
+  int
+)
+ident(
+  def pivot "SuffixArray.ml" 70 1685 1691 "SuffixArray.ml" 74 1796 1835
+)
+"SuffixArray.ml" 69 1648 1665 "SuffixArray.ml" 69 1648 1672
+type(
+  bytes -> bytes -> int
+)
+ident(
+  ext_ref Pervasives.compare
+)
+"SuffixArray.ml" 69 1648 1673 "SuffixArray.ml" 69 1648 1677
+type(
+  bytes
+)
+ident(
+  int_ref patt "SuffixArray.ml" 59 1297 1314 "SuffixArray.ml" 59 1297 1318
+)
+"SuffixArray.ml" 69 1648 1678 "SuffixArray.ml" 69 1648 1681
+type(
+  bytes
+)
+ident(
+  int_ref str "SuffixArray.ml" 65 1511 1523 "SuffixArray.ml" 65 1511 1526
+)
+"SuffixArray.ml" 69 1648 1665 "SuffixArray.ml" 69 1648 1681
+type(
+  int
+)
+"SuffixArray.ml" 70 1685 1694 "SuffixArray.ml" 70 1685 1699
+type(
+  int
+)
+ident(
+  int_ref pivot "SuffixArray.ml" 69 1648 1657 "SuffixArray.ml" 69 1648 1662
+)
+"SuffixArray.ml" 70 1685 1700 "SuffixArray.ml" 70 1685 1701
+type(
+  int -> int -> bool
+)
+ident(
+  ext_ref Pervasives.( < )
+)
+"SuffixArray.ml" 70 1685 1702 "SuffixArray.ml" 70 1685 1703
+type(
+  int
+)
+"SuffixArray.ml" 70 1685 1694 "SuffixArray.ml" 70 1685 1703
+type(
+  bool
+)
+"SuffixArray.ml" 71 1704 1716 "SuffixArray.ml" 71 1704 1718
+type(
+  (bytes * 'b) list -> (bytes * 'b) option
+)
+ident(
+  int_ref bs "SuffixArray.ml" 60 1380 1390 "SuffixArray.ml" 60 1380 1392
+)
+"SuffixArray.ml" 71 1704 1720 "SuffixArray.ml" 71 1704 1727
+type(
+  (bytes * 'b) list -> int -> int -> (bytes * 'b) list
+)
+ident(
+  int_ref sublist "SuffixArray.ml" 40 865 874 "SuffixArray.ml" 40 865 881
+)
+"SuffixArray.ml" 71 1704 1728 "SuffixArray.ml" 71 1704 1730
+type(
+  (bytes * 'b) list
+)
+ident(
+  int_ref sa "SuffixArray.ml" 60 1380 1393 "SuffixArray.ml" 60 1380 1395
+)
+"SuffixArray.ml" 71 1704 1731 "SuffixArray.ml" 71 1704 1732
+type(
+  int
+)
+"SuffixArray.ml" 71 1704 1734 "SuffixArray.ml" 71 1704 1737
+type(
+  int
+)
+ident(
+  int_ref mid "SuffixArray.ml" 62 1432 1439 "SuffixArray.ml" 62 1432 1442
+)
+"SuffixArray.ml" 71 1704 1737 "SuffixArray.ml" 71 1704 1738
+type(
+  int -> int -> int
+)
+ident(
+  ext_ref Pervasives.( - )
+)
+"SuffixArray.ml" 71 1704 1738 "SuffixArray.ml" 71 1704 1739
+type(
+  int
+)
+"SuffixArray.ml" 71 1704 1734 "SuffixArray.ml" 71 1704 1739
+type(
+  int
+)
+"SuffixArray.ml" 71 1704 1720 "SuffixArray.ml" 71 1704 1740
+call(
+  stack
+)
+type(
+  (bytes * 'b) list
+)
+"SuffixArray.ml" 71 1704 1716 "SuffixArray.ml" 71 1704 1741
+call(
+  tail
+)
+type(
+  (bytes * 'b) option
+)
+"SuffixArray.ml" 72 1742 1756 "SuffixArray.ml" 72 1742 1761
+type(
+  int
+)
+ident(
+  int_ref pivot "SuffixArray.ml" 69 1648 1657 "SuffixArray.ml" 69 1648 1662
+)
+"SuffixArray.ml" 72 1742 1762 "SuffixArray.ml" 72 1742 1763
+type(
+  int -> int -> bool
+)
+ident(
+  ext_ref Pervasives.( = )
+)
+"SuffixArray.ml" 72 1742 1764 "SuffixArray.ml" 72 1742 1765
+type(
+  int
+)
+"SuffixArray.ml" 72 1742 1756 "SuffixArray.ml" 72 1742 1765
+type(
+  bool
+)
+"SuffixArray.ml" 73 1766 1784 "SuffixArray.ml" 73 1766 1787
+type(
+  bytes
+)
+ident(
+  int_ref str "SuffixArray.ml" 65 1511 1523 "SuffixArray.ml" 65 1511 1526
+)
+"SuffixArray.ml" 73 1766 1789 "SuffixArray.ml" 73 1766 1794
+type(
+  'b
+)
+ident(
+  int_ref index "SuffixArray.ml" 65 1511 1528 "SuffixArray.ml" 65 1511 1533
+)
+"SuffixArray.ml" 73 1766 1778 "SuffixArray.ml" 73 1766 1795
+type(
+  bytes * 'b
+)
+type(
+  (bytes * 'b) option
+)
+"SuffixArray.ml" 74 1796 1807 "SuffixArray.ml" 74 1796 1809
+type(
+  (bytes * 'b) list -> (bytes * 'b) option
+)
+ident(
+  int_ref bs "SuffixArray.ml" 60 1380 1390 "SuffixArray.ml" 60 1380 1392
+)
+"SuffixArray.ml" 74 1796 1811 "SuffixArray.ml" 74 1796 1818
+type(
+  (bytes * 'b) list -> int -> int -> (bytes * 'b) list
+)
+ident(
+  int_ref sublist "SuffixArray.ml" 40 865 874 "SuffixArray.ml" 40 865 881
+)
+"SuffixArray.ml" 74 1796 1819 "SuffixArray.ml" 74 1796 1821
+type(
+  (bytes * 'b) list
+)
+ident(
+  int_ref sa "SuffixArray.ml" 60 1380 1393 "SuffixArray.ml" 60 1380 1395
+)
+"SuffixArray.ml" 74 1796 1823 "SuffixArray.ml" 74 1796 1826
+type(
+  int
+)
+ident(
+  int_ref mid "SuffixArray.ml" 62 1432 1439 "SuffixArray.ml" 62 1432 1442
+)
+"SuffixArray.ml" 74 1796 1828 "SuffixArray.ml" 74 1796 1834
+type(
+  int
+)
+ident(
+  int_ref length "SuffixArray.ml" 61 1398 1405 "SuffixArray.ml" 61 1398 1411
+)
+"SuffixArray.ml" 74 1796 1811 "SuffixArray.ml" 74 1796 1834
+call(
+  stack
+)
+type(
+  (bytes * 'b) list
+)
+"SuffixArray.ml" 74 1796 1807 "SuffixArray.ml" 74 1796 1835
+call(
+  tail
+)
+type(
+  (bytes * 'b) option
+)
+"SuffixArray.ml" 72 1742 1753 "SuffixArray.ml" 74 1796 1835
+type(
+  (bytes * 'b) option
+)
+"SuffixArray.ml" 70 1685 1691 "SuffixArray.ml" 74 1796 1835
+type(
+  (bytes * 'b) option
+)
+"SuffixArray.ml" 69 1648 1653 "SuffixArray.ml" 74 1796 1835
+type(
+  (bytes * 'b) option
+)
+"SuffixArray.ml" 68 1604 1609 "SuffixArray.ml" 74 1796 1835
+type(
+  (bytes * 'b) option
+)
+"SuffixArray.ml" 67 1572 1577 "SuffixArray.ml" 74 1796 1835
+type(
+  (bytes * 'b) option
+)
+"SuffixArray.ml" 66 1539 1544 "SuffixArray.ml" 74 1796 1835
+type(
+  (bytes * 'b) option
+)
+"SuffixArray.ml" 63 1461 1465 "SuffixArray.ml" 74 1796 1835
+type(
+  (bytes * 'b) option
+)
+"SuffixArray.ml" 62 1432 1435 "SuffixArray.ml" 74 1796 1835
+type(
+  (bytes * 'b) option
+)
+"SuffixArray.ml" 61 1398 1401 "SuffixArray.ml" 74 1796 1835
+type(
+  (bytes * 'b) option
+)
+"SuffixArray.ml" 60 1380 1393 "SuffixArray.ml" 74 1796 1835
+type(
+  (bytes * 'b) list -> (bytes * 'b) option
+)
+"SuffixArray.ml" 75 1836 1841 "SuffixArray.ml" 75 1836 1843
+type(
+  (bytes * int) list -> (bytes * int) option
+)
+ident(
+  int_ref bs "SuffixArray.ml" 60 1380 1390 "SuffixArray.ml" 60 1380 1392
+)
+"SuffixArray.ml" 75 1836 1844 "SuffixArray.ml" 75 1836 1846
+type(
+  (bytes * int) list
+)
+ident(
+  int_ref sa "SuffixArray.ml" 59 1297 1329 "SuffixArray.ml" 59 1297 1331
+)
+"SuffixArray.ml" 75 1836 1841 "SuffixArray.ml" 75 1836 1846
+call(
+  tail
+)
+type(
+  (bytes * int) option
+)
+"SuffixArray.ml" 60 1380 1382 "SuffixArray.ml" 75 1836 1846
+type(
+  (bytes * int) option
+)
+type(
+  (bytes * int) option
+)
+"SuffixArray.ml" 59 1297 1328 "SuffixArray.ml" 75 1836 1846
+type(
+  (bytes * int) list -> (bytes * int) option
+)
+"SuffixArray.ml" 59 1297 1313 "SuffixArray.ml" 75 1836 1846
+type(
+  bytes -> (bytes * int) list -> (bytes * int) option
+)
