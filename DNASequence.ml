@@ -23,6 +23,8 @@ sig
 	val from_string : string -> seq
 	val pattern_search: string -> seq -> (subseq * int) option
 	val string_of_seq : seq -> string
+	val to_string : seq -> string
+	val string_of_subseq : subseq -> string
 end
 
 module type COMPARABLE =
@@ -62,6 +64,11 @@ struct
 
 	let string_of_seq (dna: seq) : string =
 		SA.string_of_sarray dna
+
+	let to_string = string_of_seq
+
+	let string_of_subseq (s: subseq) : string =
+		SA.string_of_suffix s
 
 end
 
