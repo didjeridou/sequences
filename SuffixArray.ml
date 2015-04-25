@@ -45,7 +45,6 @@ end
 module SuffixArray(SA:SUFFIXARRAY_ARG) : (SUFFIXARRAY 
 	with type suffix = string) =
 struct
-	open Order
   	type suffix = string
   	type sarray = (suffix * int) list;;
 

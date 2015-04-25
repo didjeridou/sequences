@@ -7,23 +7,11 @@
  * https://github.com/didjeridou/sequences
 *)
 
+(** example.ml: The first special comment of the file is the comment
+    associated with the whole module. *)
+
 open Core.Std
 open DNASequence
-(* open SuffixArray
-
-let test_sa = SuffixArray.create "aacaagtttacaagc";;
-
-print_string (SuffixArray.to_string test_sa);;
-
-let string_of_result (patt: string) (sa: SuffixArray.suffixa) : string = 
-	match SuffixArray.search patt sa with
-	| None -> "\n Not Found \n"
-	| Some (str, i) -> ("\n Found " ^ string_of_int i ^ ": " ^ str)
-;;
-
-print_string (string_of_result "aagc" test_sa);;
-print_string (string_of_result "ca" test_sa);;
- *)
 
 module DNA = DNASequence.Make(
   struct

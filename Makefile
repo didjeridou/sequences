@@ -1,10 +1,25 @@
-all: sequences SuffixArray
+all: sequences
 
 sequences: sequences.ml
 	corebuild sequences.native
 
-SuffixArray: SuffixArray.ml
-	corebuild SuffixArray.native
+CAMLDOC = ocamldoc
+
+# Source and Object files
+SOURCES = \
+	DNASequence.ml \
+	sequences.ml \
+	SuffixArray.ml \
+
+
+OBJECTS = $(SOURCES:.ml=.cmo)
+
+# DocGen
+
+doc: $(OBJECTS)
+	$(CAMLDOC) -html $(SOURCES)
+
 
 clean:
 	rm -rf _build *.native
+
