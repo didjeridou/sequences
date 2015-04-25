@@ -9,56 +9,63 @@
 
 open Core.Std
 
-type order = Equal | Less | Greater
-
 module type SUFFIXARRAY =
 sig
-  	type suffixa
+  	type suffix
+  	type sarray
 
-	val is_empty : suffixa -> bool
-	val to_string : suffixa -> string
+  	val empty : sarray
 
-	val create : string -> suffixa
- 	val search : string -> suffixa -> (string * int) option
+	val from_string : string -> sarray
+ 	val string_search : string -> sarray -> (suffix * int) option
 
+	val string_of_suffix : suffix -> string
+	val string_of_index : int -> string
+	val string_of_sarray : sarray -> string
+
+
+ 	(* val run_tests : unit -> unit *)
 end
 
-module SuffixArray: SUFFIXARRAY =
+module type SUFFIXARRAY_ARG =
+sig
+	type suffix
+
+	val compare : suffix -> suffix -> Ordering.t
+
+	val string_of_suffix : suffix -> string
+	val string_of_index : int -> string
+end
+
+
+
+
+
+(* List implementation of the SUFFIXARRAY signature. *)
+module SuffixArray(SA:SUFFIXARRAY_ARG) : (SUFFIXARRAY 
+	with type suffix = string) =
 struct
-    
-    type elt = (string * int)
-  	type suffixa = elt list
+	open Order
+  	type suffix = string
+  	type sarray = (suffix * int) list;;
 
-	let is_empty (sa: suffixa) : bool =
-		match sa with
-		| [] -> true
-		| _ -> false
+  	(* INVARIANT: sorted by index, no duplicates *)
 
-    let suffix_compare (s1: string) (s2: string) : order =
-        let int_c = compare s1 s2 in
-            if int_c < 0 then Less
-            else if int_c = 0 then Equal
-            else Greater
+  	let empty = [] ;;
 
-	let rec to_string (sa: suffixa) : string =
-		match sa with
-		| [] -> "\n\n"
-		| (str, i)::tl -> 
-			"\n" ^ string_of_int i ^ ": " ^ str ^ to_string tl
-	;;
-
-(* 	let radixSort (lst: string list): string list =
-		match lst with
-		| [] -> []
-		| _ -> 
- *)
-	let rec toSuffixList (str: string) (index: int) : suffixa =
+	(* Helper for from_string *)
+	let rec to_suffix_list (str: string) (index: int) : sarray =
 		if String.is_empty str then []
 		else
 			let suffix = String.drop_prefix str 1 in
-				(str, index) :: (toSuffixList suffix (index + 1))
+				(str, index) :: (to_suffix_list suffix (index + 1))
 
-	let rec subSA (sa: suffixa) (from: int) (toend: int) = 
+	(* Creates SA from a string *)
+	let from_string (str: string) : sarray =
+		List.sort compare (to_suffix_list str 0)
+
+	(* Helper for binary search. Returns half-array for range *)
+	let rec subSA (sa: sarray) (from: int) (toend: int) = 
 	  	match sa with
 	  	| [] -> failwith "subSA"
 	  	| hd::tl -> 
@@ -68,16 +75,17 @@ struct
 	    	in
 	     	if from > 0 then tail 
 	     	else hd::tail
-(*
-subSA [1;2;3;4;5;6;7;8;9] 3 5;;
-- : int list = [4; 5; 6]
-*)
 
-	let create (str: string) : suffixa =
-		List.sort compare (toSuffixList str 0)
+	(* Helper function for search *)
+	let suffix_compare (s1: string) (s2: string) : Ordering.t =
+	        let int_c = compare s1 s2 in
+	            if int_c < 0 then Less
+	            else if int_c = 0 then Equal
+	            else Greater
 
-	let search (patt: string) (sa: suffixa) : (string * int) option =
-		let k = String.length patt in
+	(* Binary search for Suffx Array *)
+	let string_search (str: string) (sa: sarray) : (suffix * int) option =
+		let k = String.length str in
 		let rec bs sa =
 			let length = List.length sa in
 			let mid = (length / 2) in
@@ -86,34 +94,32 @@ subSA [1;2;3;4;5;6;7;8;9] 3 5;;
 				| Some (s, index) ->
 					let pivot = 
 						(if k < String.length s then
-							suffix_compare patt (String.sub s 0 (k))
-						else suffix_compare patt s)
+							suffix_compare str (String.sub s 0 (k))
+						else suffix_compare str s)
 					in
-                    match pivot with
-                    | Less -> bs (subSA sa 0 (mid-1))
-                    | Equal -> Some (s, index)
-                    | Greater -> bs (subSA sa (mid) (length - 1))
-
+	                match pivot with
+	                | Less -> bs (subSA sa 0 (mid-1))
+	                | Equal -> Some (s, index)
+	                | Greater -> bs (subSA sa (mid) (length - 1))
 		in bs sa
 
-(*         
-    TESTS HERE
-
-            let is_empty (sa: suffixa) : bool =
-
-            let suffix_compare (s1: string) (s2: string) : order =
-
-            let rec to_string (sa: suffixa) : string =
-
-            let rec toSuffixList (str: string) (index: int) : suffixa =
-
-            let rec subSA (sa: suffixa) (from: int) (toend: int) = 
-
-            let create (str: string) : suffixa =
-                List.sort compare (toSuffixList str 0)
-
-            let search (patt: string) (sa: suffixa) : (string * int) option =
- *)
-
+	let string_of_suffix s = s
+	let string_of_index = string_of_int
+	let string_of_sarray (sa: sarray) : string = 
+		let rec to_string sa =
+			match sa with
+			| [] -> "\n\n"
+			| (str, i)::tl -> 
+				"\n" ^ string_of_int i ^ ": " ^ str ^ to_string tl
+		in to_string sa
 end
+
+
+module Make (SA: SUFFIXARRAY_ARG) : (SUFFIXARRAY 
+	with type suffix = string) =
+	
+	SuffixArray(SA)
+
+
+
 

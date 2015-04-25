@@ -4,85 +4,77 @@
  * Sequences V1
  * Guillaume Laliberté
  * CSCI-51
- * https://github.com/didjeridou/sequences
+ * https://github.com/didjeridou/seqs
 *)
 
 open Core.Std
 
-exception TODO
-
-module type DNASequence =
+(* The interface for the DNA Sequence *)
+module type DNASEQ =
 sig
-	type base
-	type sequence
+	(* abstract seq type *)
+	type seq
+	type subseq
 	
-	val is_empty : sequence -> bool
-	val create : string -> sequence
-	val search : sequence -> sequence -> (bool * int option * int option)
-	val string_of_sequence : sequence -> string
+	val empty : seq
+
+	val is_empty : seq -> bool
+
+	val from_string : string -> seq
+	val pattern_search: string -> seq -> (subseq * int) option
+	val string_of_seq : seq -> string
+	val to_string : seq -> string
+	val string_of_subseq : subseq -> string
 end
 
-(* module DNASequence: SUFFIXARRAY =
+module type COMPARABLE =
+sig
+  type t
+  val compare : t -> t -> Ordering.t
+  val string_of_t : t -> string
+end
+
+
+
+module SuffixArrayDNASeq(C : COMPARABLE) : (DNASEQ) =
 struct
-    
-    type elt = (string * int)
-  	type suffixa = elt list
+    module SA = SuffixArray.Make(
+    struct
+      	type suffix = C.t
 
-	let is_empty (sa: suffixa) : bool =
-		match sa with
-		| [] -> true
-		| _ -> false
+      	let compare s1 s2 = C.compare s1 s2
+      	let string_of_suffix s = C.string_of_t s
+      	let string_of_index i = string_of_int i
 
-    let suffix_compare (s1: string) (s2: string) : order =
-        let int_c = compare s1 s2 in
-            if int_c < 0 then Less
-            else if int_c = 0 then Equal
-            else Greater
+	end)
 
-	let rec to_string (sa: suffixa) : string =
-		match sa with
-		| [] -> "\n\n"
-		| (str, i)::tl -> 
-			"\n" ^ string_of_int i ^ ": " ^ str ^ to_string tl
-	;;
+    type subseq = SA.suffix
+	type seq = SA.sarray
 
-	let rec toSuffixList (str: string) (index: int) : suffixa =
-		if String.is_empty str then []
-		else
-			let suffix = String.drop_prefix str 1 in
-				(str, index) :: (toSuffixList suffix (index + 1))
+	let empty = SA.empty
 
-	let rec subSA (sa: suffixa) (from: int) (toend: int) = 
-	  	match sa with
-	  	| [] -> failwith "subSA"
-	  	| hd::tl -> 
-	    	let tail = 
-	    		if toend = 0 then [] 
-	    		else subSA tl (from - 1) (toend - 1)
-	    	in
-	     	if from > 0 then tail 
-	     	else hd::tail
+	let is_empty (dna: seq) : bool =
+		if dna = SA.empty then true else false
 
-	let create (str: string) : suffixa =
-		List.sort compare (toSuffixList str 0)
+	let from_string (str: string) : seq =
+		SA.from_string str
 
-	let search (patt: string) (sa: suffixa) : (string * int) option =
-		let k = String.length patt in
-		let rec bs sa =
-			let length = List.length sa in
-			let mid = (length / 2) in
-				match List.nth sa mid with
-				| None -> None
-				| Some (s, index) ->
-					let pivot = 
-						(if k < String.length s then
-							suffix_compare patt (String.sub s 0 (k))
-						else suffix_compare patt s)
-					in
-                    match pivot with
-                    | Less -> bs (subSA sa 0 (mid-1))
-                    | Equal -> Some (s, index)
-                    | Greater -> bs (subSA sa (mid) (length - 1))
+	let pattern_search (str: string) (dna: seq) : (subseq * int) option =
+		SA.string_search str dna
 
-		in bs sa
-end *)
+	let string_of_seq (dna: seq) : string =
+		SA.string_of_sarray dna
+
+	let to_string = string_of_seq
+
+	let string_of_subseq (s: subseq) : string =
+		SA.string_of_suffix s
+
+end
+
+module Make (C : COMPARABLE) : (DNASEQ) =
+	SuffixArrayDNASeq (C)
+
+
+
+
