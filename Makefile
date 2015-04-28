@@ -1,5 +1,7 @@
 all: sequences
 
+c: clean all
+
 sequences: sequences.ml
 	corebuild sequences.native
 
@@ -21,5 +23,5 @@ doc: $(OBJECTS)
 
 
 clean:
-	rm -rf _build *.native
+	rm -rf _build *.native *.cmi *.cmo
 

@@ -13,6 +13,22 @@
 open Core.Std
 open DNASequence
 
+
+
+
+
+let verbose = ref false
+
+let speclist = 
+	[
+		("-v", Arg.Set verbose, "Enables verbose mode");
+	]
+in 
+let usage_msg = "Options available:"in 
+	Arg.parse speclist print_endline usage_msg;
+	print_endline ("Verbose mode: " ^ string_of_bool !verbose);
+
+
 module DNA = DNASequence.Make(
   struct
     type t = string
