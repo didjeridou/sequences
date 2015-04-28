@@ -1,6 +1,5 @@
 
 
-(* REQUIRES opam install cryptokit *)
 
 open Core.Std
 
