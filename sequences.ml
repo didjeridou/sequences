@@ -63,10 +63,45 @@ let rec open_to_analyze (data: DNA.seq option) =
 
   Meta.console ();
 
+  let list_data =
+    Command.basic 
+      ~summary:"List the CFNA data in ./_data"
+      Command.Spec.(
+        empty
+        +> anon ("test" %: string)
+      )
+      (fun dna_seq () -> 
+        print_string "Success"
+        (*Meta.list_data ();
+                open_to_analyze data*))
+  in
+
+  let exit_program =
+    Command.basic 
+      ~summary:"Exit Sequences"
+      Command.Spec.(
+        empty
+      )
+      (fun () -> Meta.exit_program ())
+  in
+
+  let controls =
+    Command.group 
+      ~summary: ("")
+      [ "data", list_data; "exit", exit_program ]
+  in
+
   match In_channel.input_line stdin with
   | None -> open_to_analyze data
-  | Some cmd -> print_string cmd
+  | Some cmd -> 
+    Command.run 
+      ~argv: (String.split cmd ~on:' ')
+      controls
 
+(*   match In_channel.input_line stdin with
+  | None -> open_to_analyze data
+  | Some cmd -> print_string cmd
+ *)
 (*   match data with
   | None -> Meta.empty_data ()
   | Some d ->
@@ -100,5 +135,8 @@ let command =
     ~summary: (Meta.get_intro () ^ Meta.get_summary ())
     [ "use", use_cfna ]
 
-let () = Command.run ~version: (Meta.get_version ()) ~build_info:"DNA" command
+let () = Command.run 
+          ~version: (Meta.get_version ()) 
+          ~build_info:"DNA" 
+          command
 

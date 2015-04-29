@@ -21,9 +21,10 @@ sig
   val heading : unit -> unit
   val console : unit -> unit
   val empty_data : unit -> unit
-  val data_files : unit -> unit
+  val list_data : unit -> unit
   val ask_filename : unit -> unit
   val avail_commands : unit -> unit
+  val exit_program : unit -> unit
 end
 
 (* Write a module called Math that implements the MATH signature above 
@@ -61,14 +62,14 @@ struct
 
   let current_seq (s: string) : unit =
     print_string ("[INFO] Sequence selected: " ^ s 
-      ^ "\n\n[STATUS] Perfom analysis using the following commands.\n\n");;
+      ^ "\n\n[STATUS] Perfom analysis using the following commands.\n");;
   
   let console () = 
     Out_channel.output_string stdout (get_console ());
     Out_channel.flush stdout;
   ;;
 
-  let data_files () =
+  let list_data () =
     let avail_files = 
       (if (Sys.is_directory_exn "./_data")
         then 
@@ -85,13 +86,18 @@ struct
     print_string "Data seems to be empty\n"
   ;;
 
-  let ask_filename () = print_string "Enter the name of a CFNA file:"
+  let ask_filename () = 
+    print_string "Enter the name of a CFNA file:"
+  ;;
+
+  let exit_program () = 
+    print_string "Exiting Sequences"
   ;;
 
   let avail_commands () = 
     print_string
 "
-=== commands ===
+=== Command List (must do 'run COMMAND') ===
 
   data          List the CFNA data in ./_data
   search SEQ    Search the DNA for a certain string SEQ
