@@ -16,9 +16,10 @@ sig
   val get_version : unit -> string
   val get_intro : unit -> string
   val get_summary : unit -> string
+  val get_console : unit -> string
+  val current_seq : string -> unit
   val heading : unit -> unit
-  val input : unit -> unit
-  val indexed : unit -> unit
+  val console : unit -> unit
   val empty_data : unit -> unit
   val data_files : unit -> unit
   val ask_filename : unit -> unit
@@ -49,14 +50,23 @@ struct
 ";;
 
   let get_summary () =
-"\nSUMMARY: Indexes a DNA sequence as a suffix array (from a 
-CFNA file) for efficient analysis."
+"\n[INFO] SEQUENCES indexes a DNA sequence as a suffix array 
+(from a CFNA file) for efficient analysis."
   
   let heading () = 
     print_string ((get_intro ()) ^ (get_summary ()))
   ;;
 
-  let input () = print_string "Sequences >";;
+  let get_console () = "Sequences > ";;
+
+  let current_seq (s: string) : unit =
+    print_string ("[INFO] Sequence selected: " ^ s 
+      ^ "\n\n[STATUS] Perfom analysis using the following commands.\n\n");;
+  
+  let console () = 
+    Out_channel.output_string stdout (get_console ());
+    Out_channel.flush stdout;
+  ;;
 
   let data_files () =
     let avail_files = 
@@ -78,17 +88,14 @@ CFNA file) for efficient analysis."
   let ask_filename () = print_string "Enter the name of a CFNA file:"
   ;;
 
-  let indexed () = 
-    print_string "%% DNA indexed. You can now perfom analysis\n\n"
-  ;;
-
   let avail_commands () = 
     print_string
 "
 === commands ===
 
+  data          List the CFNA data in ./_data
   search SEQ    Search the DNA for a certain string SEQ
-  searchf SEQ   Search the DNA for a SEQ from a cfna file
+  searchf SEQ   Search the DNA for a SEQ from a .cfna file
   lcp SEQ       Find Longest Common Prefix in DNA & file SEQ
   exit          Find Longest Common Prefix in DNA & file SEQ
 

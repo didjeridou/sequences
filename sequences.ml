@@ -18,20 +18,9 @@ open Core.Std
 open DNASequence
 open Meta
 
-
 (* Just a small pattern to make quick tests *)
 let data_test_pattern = "e";;
 let opened_cfna = ref "No opened CFNA file";;
-
-(* declare x to be a mutable variable of type “int ref” 
-let x = ref 3;;
-(* reset the value of x *)
-x := 4;;
-(* syntax for getting the value of x *)
-!x;;
-x := !x + 1;;  (* increase x by 1 *)
-print_int !x;;
-*)
 
 (* We create our module DNA to use strings as prefixes since
  * DNA data is in fact a series of A,T,C and G *)
@@ -64,24 +53,26 @@ let parse_cfna file =
 
 (* Helper function to index a CFNA into our DNA data structure *)
 let dna_from_cfna file : DNA.seq option = 
-  ignore(print_string "\n\n%% Indexing DNA...\n";);
+  ignore(print_string "\n\n[STATUS] Indexing DNA...\n\n";);
   Some (DNA.from_string (parse_cfna file))
-(*     print_string (
-      string_of_result test_pattern test_sequence); *)
 ;;
 
 let rec open_to_analyze (data: DNA.seq option) =
-  ignore(Meta.indexed ());
-  ignore(Meta.avail_commands ());
-  ignore(Meta.input ());
+  Meta.current_seq !opened_cfna;
+  Meta.avail_commands ();
 
-  match data with
+  Meta.console ();
+
+  match In_channel.input_line stdin with
+  | None -> open_to_analyze data
+  | Some cmd -> print_string cmd
+
+(*   match data with
   | None -> Meta.empty_data ()
   | Some d ->
     print_string (
-      string_of_result data_test_pattern d)
+      string_of_result data_test_pattern d) *)
 ;;
-
 
 let use_cfna =
   Command.basic 
@@ -91,7 +82,7 @@ let use_cfna =
       +> anon ("filename" %: file)
     )
     (fun filename () -> 
-      (Meta.heading ());
+      Meta.heading ();
       open_to_analyze (dna_from_cfna filename))
 
 let default =
@@ -106,7 +97,7 @@ let default =
 
 let command =
   Command.group 
-    ~summary: ((Meta.get_intro ()) ^ (Meta.get_summary ()))
+    ~summary: (Meta.get_intro () ^ Meta.get_summary ())
     [ "use", use_cfna ]
 
 let () = Command.run ~version: (Meta.get_version ()) ~build_info:"DNA" command
