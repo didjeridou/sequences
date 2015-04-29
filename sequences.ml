@@ -20,7 +20,7 @@ open Meta
 
 
 (* Just a small pattern to make quick tests *)
-let data_test_pattern = "A";;
+let data_test_pattern = "e";;
 let opened_cfna = ref "No opened CFNA file";;
 
 (* declare x to be a mutable variable of type “int ref” 
@@ -64,15 +64,22 @@ let parse_cfna file =
 
 (* Helper function to index a CFNA into our DNA data structure *)
 let dna_from_cfna file : DNA.seq option = 
-  ignore(print_string "\n\n Indexing DNA... \n";);
+  ignore(print_string "\n\n%% Indexing DNA...\n";);
   Some (DNA.from_string (parse_cfna file))
 (*     print_string (
       string_of_result test_pattern test_sequence); *)
 ;;
 
 let rec open_to_analyze (data: DNA.seq option) =
+  ignore(Meta.indexed ());
   ignore(Meta.avail_commands ());
   ignore(Meta.input ());
+
+  match data with
+  | None -> Meta.empty_data ()
+  | Some d ->
+    print_string (
+      string_of_result data_test_pattern d)
 ;;
 
 
@@ -83,7 +90,9 @@ let use_cfna =
       empty
       +> anon ("filename" %: file)
     )
-    (fun filename () -> open_to_analyze (dna_from_cfna filename))
+    (fun filename () -> 
+      (Meta.heading ());
+      open_to_analyze (dna_from_cfna filename))
 
 let default =
   Command.basic 
@@ -92,7 +101,7 @@ let default =
       empty
     )
     (fun () -> 
-
+      (Meta.heading ());
       open_to_analyze None)
 
 let command =

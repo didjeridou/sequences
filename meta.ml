@@ -16,7 +16,10 @@ sig
   val get_version : unit -> string
   val get_intro : unit -> string
   val get_summary : unit -> string
+  val heading : unit -> unit
   val input : unit -> unit
+  val indexed : unit -> unit
+  val empty_data : unit -> unit
   val data_files : unit -> unit
   val ask_filename : unit -> unit
   val avail_commands : unit -> unit
@@ -28,12 +31,12 @@ end
 module Meta: META =
 struct
   let get_version () = "0.03.7";;
-  
+
   let get_intro () =
 "
 ==========================================================
 
-                   DNA Pattern Finder
+                   SEQUENCES V "^ get_version () ^"
 
 ==========================================================
 
@@ -46,8 +49,12 @@ struct
 ";;
 
   let get_summary () =
-"\nIndexes a DNA sequence as a suffix array (from a CFNA file)
-for efficient analysis."
+"\nSUMMARY: Indexes a DNA sequence as a suffix array (from a 
+CFNA file) for efficient analysis."
+  
+  let heading () = 
+    print_string ((get_intro ()) ^ (get_summary ()))
+  ;;
 
   let input () = print_string "Sequences >";;
 
@@ -64,7 +71,15 @@ for efficient analysis."
     in print_string avail_files
     ;;
 
+  let empty_data () = 
+    print_string "Data seems to be empty\n"
+  ;;
+
   let ask_filename () = print_string "Enter the name of a CFNA file:"
+  ;;
+
+  let indexed () = 
+    print_string "%% DNA indexed. You can now perfom analysis\n\n"
   ;;
 
   let avail_commands () = 

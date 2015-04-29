@@ -38,9 +38,6 @@ sig
 end
 
 
-
-
-
 (* List implementation of the SUFFIXARRAY signature. *)
 module SuffixArray(SA:SUFFIXARRAY_ARG) : (SUFFIXARRAY 
 	with type suffix = string) =
@@ -96,10 +93,15 @@ struct
 							suffix_compare str (String.sub s 0 (k))
 						else suffix_compare str s)
 					in
-	                match pivot with
-	                | Less -> bs (subSA sa 0 (mid-1))
-	                | Equal -> Some (s, index)
-	                | Greater -> bs (subSA sa (mid) (length - 1))
+					if mid = 0 then
+						match pivot with
+						| Less | Greater -> None
+						| Equal -> Some (s, index)
+					else
+	                	match pivot with
+	                	| Less -> bs (subSA sa 0 (mid-1))
+	                	| Equal -> Some (s, index)
+	                	| Greater -> bs (subSA sa (mid) (length - 1))
 		in bs sa
 
 	let string_of_suffix s = s
