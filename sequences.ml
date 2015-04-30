@@ -56,6 +56,7 @@ module DNA = DNASequence.Make(
  * It is a Command group for the shell. *)
 
 let _data = ref DNA.empty;;
+let _data2 = ref DNA.empty;;
 let _cfna = ref "No opened CFNA file";;
 let _subcommands =
   ref (Command.group 
@@ -67,11 +68,12 @@ let _subcommands =
  * Get the metadata, sets the _cfna metadata and get the string 
  * of ATCG to create the DNA.seq *)
 let parse_cfna file =
-  In_channel.with_file file ~f:(fun ic ->
+  In_channel.with_file ("./_data/"^file) ~f:(fun ic ->
     _cfna := input_line ic;
     Tools.current_seq !_cfna;
     let atcg = input_line ic in 
       Some atcg)
+;;
 
 (* HELPER: index the ATCG data from the CFNA into our DNA
  * data structure (built over a string suffix array) and
@@ -96,7 +98,7 @@ let rec main () =
   | None -> main ()
   | Some cmd ->
     Command.run 
-      ~argv: ("unrecognized"::(String.split cmd ~on:' '))
+      ~argv: ("invalid"::(String.split cmd ~on:' '))
       !_subcommands
 ;;
 
@@ -142,15 +144,18 @@ let run =
       main ())
 ;;
 
-(* Associating textual commands to actions *)
-let command =
-  Command.group ~summary: (Tools.get_intro () ^ Tools.get_summary ())
-    [ "load", load_cfna_cmd; "run", run ]
-;;
-
 (*##############
  * SUBCOMMANDS
  *#############*)
+
+let help =
+  Command.basic 
+    ~summary:"List subcommands" Command.Spec.(empty)
+    (fun () -> 
+      Tools.avail_commands ();
+      main ())
+;;
+
 
 (* Subcommand 'exit' *)
 let exit_program =
@@ -171,13 +176,13 @@ let list_data =
 (* Subcommand 'search STRING'. Searches for a string in our indexed
  * DNA sequence and returns the position. *)
 let search =
-  Command.basic ~summary:"List the CFNA data in ./_data"
+  Command.basic ~summary:"Search for pattern"
     Command.Spec.(
       empty
       +> anon ("str" %: string)
     )
     (fun str () -> 
-      let res = DNA.pattern_search str !_data in 
+      let res = (DNA.pattern_search str !_data) in 
         match res with
         | None -> Tools.not_found (); main ();
         | Some (_, i) -> Tools.found_at i; main (); )
@@ -204,11 +209,19 @@ _subcommands :=
     Command.group ~summary: ("")
       [ 
         "data", list_data; 
+        "commands", help; 
         "exit", exit_program; 
-        "lcp", lcp; 
+        "lcp", lcp;
+        "load", load_cfna_cmd;
         "search", search;
         "", return;
       ]
+;;
+
+(* Associating textual commands to actions *)
+let command =
+  Command.group ~summary: (Tools.get_intro () ^ Tools.get_summary ())
+    [ "load", load_cfna_cmd; "run", run; "data", list_data ]
 ;;
 
 (* Finally, we run Command.run *)

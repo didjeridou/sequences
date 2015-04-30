@@ -24,9 +24,13 @@ sig
     val string_of_index : int -> string
     val string_of_sarray : sarray -> string
 
-    val lcp_array_of_sarray : sarray -> (int * int * int) list
-    val lcp_single : (int * int * int) list -> (int * int * int) option
-    val lcp_double : (int * int * int) list -> (int * int * int) option
+    val lcp_array_of_sarray : sarray -> (int * int * int * int) list
+
+    val lcp_single : (int * int * int * int) list 
+        -> (int * int * int * int) option
+
+    val lcp_double : (int * int * int) list 
+        -> (int * int * int) option
 
 
     (* val run_tests : unit -> unit *)
@@ -71,13 +75,13 @@ struct
         List.sort ~cmp:(compare) (to_suffix_list str 0)
 
     (* Helper for binary search. Returns half-array for range *)
-    let rec subSA (sa: sarray) (from: int) (toend: int) = 
+    let rec sub_sa (sa: sarray) (from: int) (toend: int) = 
         match sa with
-        | [] -> failwith "subSA"
+        | [] -> failwith "sub_sa"
         | hd::tl -> 
             let tail = 
                 if toend = 0 then [] 
-                else subSA tl (from - 1) (toend - 1)
+                else sub_sa tl (from - 1) (toend - 1)
             in
             if from > 0 then tail 
             else hd::tail
@@ -109,9 +113,9 @@ struct
                         | Equal -> Some (s, index)
                     else
                         match pivot with
-                        | Less -> bs (subSA sa 0 (mid-1))
+                        | Less -> bs (sub_sa sa 0 (mid-1))
                         | Equal -> Some (s, index)
-                        | Greater -> bs (subSA sa (mid) (length - 1))
+                        | Greater -> bs (sub_sa sa (mid) (length - 1))
         in bs sa
 
     let get_suffix_by_rank (r: int) (_sa: sarray ref) : suffix option =
@@ -128,13 +132,13 @@ struct
             else
                 lcs (String.drop_prefix s1 1) (String.drop_prefix s2 1) (c+1)
 
-    let lcp_array_of_sarray (sarr: sarray) : (int * int * int) list =
-        let rec lcp (sa: sarray) =
+    let lcp_array_of_sarray (sarr: sarray) : (int * int * int * int) list =
+        let rec lcp (sa: sarray) (index: int) =
             match List.nth sa 0, List.nth sa 1 with
             | None, _ | _, None -> []
             | Some (s1,i1), Some (s2,i2) -> 
-                ((lcs s1 s2 0), i1, i2)::(lcp (List.drop sa 1))
-        in lcp sarr
+                ((lcs s1 s2 0), i1, i2, index)::(lcp (List.drop sa 1) (index+1))
+        in lcp sarr 0
 
     let lcp_double (lcplst: (int * int * int) list) = 
         let rec max_lcp (lst: (int * int * int) list) 
@@ -149,8 +153,8 @@ struct
                 else max_lcp hdB_tl lcp
         in max_lcp lcplst None
 
-    let rec lcp_single (lst: (int * int * int) list) 
-        : (int * int * int) option =
+    let rec lcp_single (lst: (int * int * int * int) list) 
+        : (int * int * int * int) option =
         match lst with
         | [] -> None
         | hd::tl -> max (Some hd) (lcp_single tl)

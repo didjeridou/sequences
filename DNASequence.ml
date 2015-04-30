@@ -22,12 +22,15 @@ sig
 
 	val from_string : string -> seq
 	val pattern_search: string -> seq -> (subseq * int) option
-	val lcp_array_from_seq : seq -> (int * int * int) list
-	val lcp_single : (int * int * int) list -> (int * int * int) option
+	val lcp_array_from_seq : seq -> (int * int * int * int) list
+
+	val lcp_single : (int * int * int * int) list 
+		-> (int * int * int * int) option
+
 	val lcp_double : (int * int * int) list -> (int * int * int) option
 	val string_of_seq : seq -> string
 	val string_of_subseq : subseq option -> string
-	val string_of_lcp : (int * int * int) option -> seq ref -> string
+	val string_of_lcp : (int * int * int * int) option -> seq ref -> string
 	val to_string : seq -> string
 end
 
@@ -66,16 +69,18 @@ struct
 	let pattern_search (str: string) (dna: seq) : (subseq * int) option =
 		SA.string_search str dna
 
-	let lcp_array_from_seq (s: seq) : (int * int * int) list =
+	let lcp_array_from_seq (s: seq) : (int * int * int * int) list =
 		SA.lcp_array_of_sarray s
 
-	let lcp_single (l: (int * int * int) list) : (int * int * int) option = 
+	let lcp_single (l: (int * int * int * int) list) 
+		: (int * int * int * int) option = 
 		SA.lcp_single l
 
 	let lcp_double (l: (int * int * int) list) : (int * int * int) option = 
 		SA.lcp_double l
 
-	let lcp_array_from_two_str (s1: string) (s2: string) : (int * int * int) list  =
+	let lcp_array_from_two_str (s1: string) (s2: string) 
+		: (int * int * int * int) list  =
 		lcp_array_from_seq (from_string (s1 ^ "#" ^s2))
 
 	let string_of_seq (dna: seq) : string =
@@ -86,15 +91,16 @@ struct
 		| None -> "Empty subsequence"
 		| Some s -> SA.string_of_suffix s
 
-	let string_of_lcp (lcp: (int * int * int) option) (_data: seq ref) : string =
+	let string_of_lcp (lcp: (int * int * int * int) option) (_data: seq ref) 
+		: string =
 		match lcp with
 		| None -> "\nNo common prefix found \n"
-		| Some (l, posA, posB) -> 
+		| Some (l, posA, posB, i) -> 
 		        ("\n\nFound an LCP of length " ^ string_of_int l 
-		          ^ " at position " ^ string_of_int posA ^ " and " 
-		          ^ string_of_int posB ^ "\n" ^ "***LCP START***\n"
+		          ^ " at position " ^ string_of_int (posA+1) ^ " and " 
+		          ^ string_of_int (posB+1) ^ "\n" ^ "***LCP START***\n"
 		      	  ^ String.prefix (string_of_subseq (
-		      	  		SA.get_suffix_by_rank posB _data)) l
+		      	  		SA.get_suffix_by_rank i _data)) l
 		      	  ^ "\n***LCP END***\n\n")
 
 	let to_string = string_of_seq

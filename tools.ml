@@ -34,7 +34,7 @@ end
 
 module Tools: TOOLS =
 struct
-  let get_version () = "0.03.7";;
+  let get_version () = "0.03.9";;
 
   let get_intro () =
 "
@@ -89,7 +89,7 @@ struct
   ;;
 
   let not_found () = 
-    print_string "\n Not Found \n"
+    print_string "\n Not Found. For strings, search without quotes \n"
   ;;
 
   let found_at index = 
