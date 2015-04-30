@@ -18,11 +18,15 @@ sig
 
     val from_string : string -> sarray
     val string_search : string -> sarray -> (suffix * int) option
+    val get_suffix_by_rank : int -> sarray ref -> suffix option
 
     val string_of_suffix : suffix -> string
     val string_of_index : int -> string
     val string_of_sarray : sarray -> string
-    val lcp_of_sarray : sarray -> int list
+
+    val lcp_array_of_sarray : sarray -> (int * int * int) list
+    val lcp_single : (int * int * int) list -> (int * int * int) option
+    val lcp_double : (int * int * int) list -> (int * int * int) option
 
 
     (* val run_tests : unit -> unit *)
@@ -42,7 +46,9 @@ end
 (* List implementation of the SUFFIXARRAY signature. *)
 (* Currently implemented for string because that's what
  * Suffix Arrays are for, but keeping the door open for
- * potential new implementations *)
+ * potential new implementations. Is also implemented
+ * with list instead of array, but kept the name array
+ * for consistency with documentation, *)
 module SuffixArray(SA:SUFFIXARRAY_ARG) : (SUFFIXARRAY 
     with type suffix = string) =
 struct
@@ -108,19 +114,56 @@ struct
                         | Greater -> bs (subSA sa (mid) (length - 1))
         in bs sa
 
+    let get_suffix_by_rank (r: int) (_sa: sarray ref) : suffix option =
+        match List.nth !_sa r with
+        | None -> None
+        | Some (s,_) -> Some s
+
     (* HELPER: Longest common substring *)
     let rec lcs (s1: string) (s2: string) (c: int) : int =
         match fix_compare (String.prefix s1 1) (String.prefix s2 1) with
         | Less | Greater -> c
         | Equal ->
-            lcs (String.drop_prefix s1 1) (String.drop_prefix s2 1) (c+1)
+            if s1 = "" || s2 = "" then c
+            else
+                lcs (String.drop_prefix s1 1) (String.drop_prefix s2 1) (c+1)
 
-    let lcp_of_sarray (sarr: sarray) : int list =
+    let lcp_array_of_sarray (sarr: sarray) : (int * int * int) list =
         let rec lcp (sa: sarray) =
             match List.nth sa 0, List.nth sa 1 with
             | None, _ | _, None -> []
-            | Some (s1,_), Some (s2,_) -> (lcp (List.drop sa 1)) @ [lcs s1 s2 0]
+            | Some (s1,i1), Some (s2,i2) -> 
+                ((lcs s1 s2 0), i1, i2)::(lcp (List.drop sa 1))
         in lcp sarr
+
+    let lcp_double (lcplst: (int * int * int) list) = 
+        let rec max_lcp (lst: (int * int * int) list) 
+            (lcp: (int * int * int) option) : (int * int * int) option =
+            match lst with
+            | [] -> None
+            | _::[] -> lcp
+            | (lenA, posA1, posA2)::(lenB, posB1, posB2)::tl ->
+                let hdB_tl = ((lenB, posB1, posB2)::tl) in 
+                if lenA = lenB then 
+                    max_lcp hdB_tl (max lcp (Some (lenA, posA1, posA2)))
+                else max_lcp hdB_tl lcp
+        in max_lcp lcplst None
+
+    let rec lcp_single (lst: (int * int * int) list) 
+        : (int * int * int) option =
+        match lst with
+        | [] -> None
+        | hd::tl -> max (Some hd) (lcp_single tl)
+
+(* 
+    let lcp_from_double_sa (double_seq: seq) =
+        let rec max_lcp (lcpa: seq) (lcp: int) : int =
+            match lcpa with
+            | [] -> 0
+            | hd1::hd2::tl ->
+                if hd1 = hd2 then max_lcp tl (max lcp hd1)
+                else max_lcp tl lcp
+        in max_lcp (SA.lcp_of_sarray double_seq) 0 *)
 
     let string_of_suffix s = s
     let string_of_index = string_of_int

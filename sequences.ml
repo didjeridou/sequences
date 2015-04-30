@@ -183,6 +183,18 @@ let search =
         | Some (_, i) -> Tools.found_at i; main (); )
 ;;
 
+(* Subcommand 'lcp'. Searches for the longest common prefix in our
+ * indexed DNA sequence and returns the position. *)
+let lcp =
+  Command.basic ~summary:"Find longest common prefix in indexed sequence"
+    Command.Spec.(empty)
+    (fun () -> 
+      print_string (
+        DNA.string_of_lcp 
+          (DNA.lcp_single (DNA.lcp_array_from_seq !_data)) _data
+      );
+      main ())
+;;
 (* To prevent empty subcommands to end the program *)
 let return =
   Command.basic ~summary:"" Command.Spec.(empty) (fun () -> main ())
@@ -193,8 +205,9 @@ _subcommands :=
       [ 
         "data", list_data; 
         "exit", exit_program; 
+        "lcp", lcp; 
+        "search", search;
         "", return;
-        "search", search
       ]
 ;;
 
