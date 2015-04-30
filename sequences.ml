@@ -133,10 +133,19 @@ let load_cfna_cmd =
       main ())
 ;;
 
+let run =
+  Command.basic 
+    ~summary:"Run Sequences without a file" Command.Spec.(empty)
+    (fun () -> 
+      Tools.heading ();
+      Tools.avail_commands ();
+      main ())
+;;
+
 (* Associating textual commands to actions *)
 let command =
   Command.group ~summary: (Tools.get_intro () ^ Tools.get_summary ())
-    [ "load", load_cfna_cmd ]
+    [ "load", load_cfna_cmd; "run", run ]
 ;;
 
 (*##############
