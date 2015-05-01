@@ -85,7 +85,7 @@ struct
     ;;
 
   let empty_data () = 
-    print_string "Data seems to be empty\n"
+    print_string "Some data seems to be empty\n"
   ;;
 
   let not_found () = 
@@ -113,7 +113,9 @@ struct
   commands      List the available commands
   data          List the data files in ./_data/
   exit          Exit Sequences
-  load FILE     Load a CFNA file for analysis (files in ./_data/)
+  load FILE     Load a CFNA file (files in ./_data/)
+                No need to write './_data/' or '.cfna'
+                ex: load ebola_r -> loads ./_data/ebola_r.cfna
   search STRING Search a STRING pattern in the loaded data
   lcp           Find the LCP in the loaded data
   lcp2 FILE     lcp2 FILE

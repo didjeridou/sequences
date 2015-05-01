@@ -41,6 +41,8 @@ open Core.Std;;
         ("dbcd", 3)
     ];;
 
+    let test_lcp = [(0,0,0,0);(0,0,0,0);(0,0,0,0);(0,0,0,0);];;
+
     let lcp_array_of_sarray (sarr: sarray) : int list =
         let rec lcp (sa: sarray) =
             match List.nth sa 0, List.nth sa 1 with

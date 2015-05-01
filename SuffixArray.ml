@@ -18,7 +18,7 @@ sig
 
     val from_string : string -> sarray
     val string_search : string -> sarray -> (suffix * int) option
-    val get_suffix_by_rank : int -> sarray ref -> suffix option
+    val get_suffix_by_rank : int -> sarray -> suffix option
 
     val string_of_suffix : suffix -> string
     val string_of_index : int -> string
@@ -29,11 +29,6 @@ sig
     val lcp_single : (int * int * int * int) list 
         -> (int * int * int * int) option
 
-    val lcp_double : (int * int * int) list 
-        -> (int * int * int) option
-
-
-    (* val run_tests : unit -> unit *)
 end
 
 module type SUFFIXARRAY_ARG =
@@ -118,8 +113,8 @@ struct
                         | Greater -> bs (sub_sa sa (mid) (length - 1))
         in bs sa
 
-    let get_suffix_by_rank (r: int) (_sa: sarray ref) : suffix option =
-        match List.nth !_sa r with
+    let get_suffix_by_rank (r: int) (sa: sarray) : suffix option =
+        match List.nth sa r with
         | None -> None
         | Some (s,_) -> Some s
 
@@ -139,19 +134,6 @@ struct
             | Some (s1,i1), Some (s2,i2) -> 
                 ((lcs s1 s2 0), i1, i2, index)::(lcp (List.drop sa 1) (index+1))
         in lcp sarr 0
-
-    let lcp_double (lcplst: (int * int * int) list) = 
-        let rec max_lcp (lst: (int * int * int) list) 
-            (lcp: (int * int * int) option) : (int * int * int) option =
-            match lst with
-            | [] -> None
-            | _::[] -> lcp
-            | (lenA, posA1, posA2)::(lenB, posB1, posB2)::tl ->
-                let hdB_tl = ((lenB, posB1, posB2)::tl) in 
-                if lenA = lenB then 
-                    max_lcp hdB_tl (max lcp (Some (lenA, posA1, posA2)))
-                else max_lcp hdB_tl lcp
-        in max_lcp lcplst None
 
     let rec lcp_single (lst: (int * int * int * int) list) 
         : (int * int * int * int) option =

@@ -56,7 +56,6 @@ module DNA = DNASequence.Make(
  * It is a Command group for the shell. *)
 
 let _data = ref DNA.empty;;
-let _data2 = ref DNA.empty;;
 let _cfna = ref "No opened CFNA file";;
 let _subcommands =
   ref (Command.group 
@@ -68,7 +67,7 @@ let _subcommands =
  * Get the metadata, sets the _cfna metadata and get the string 
  * of ATCG to create the DNA.seq *)
 let parse_cfna file =
-  In_channel.with_file ("./_data/"^file) ~f:(fun ic ->
+  In_channel.with_file ("./_data/"^file^".cfna") ~f:(fun ic ->
     _cfna := input_line ic;
     Tools.current_seq !_cfna;
     let atcg = input_line ic in 
@@ -78,13 +77,18 @@ let parse_cfna file =
 (* HELPER: index the ATCG data from the CFNA into our DNA
  * data structure (built over a string suffix array) and
  * set _data to our new data *)
-let load_cfna file = 
+
+let load_cfna file _d_ref = 
   let parsed = parse_cfna file in
     match parsed with
     | None -> print_string "No ATCG in file in selected file"
     | Some loaded -> 
       print_string "\n\n[STATUS] Indexing DNA...\n\n";
-      _data := (DNA.from_string loaded);
+      _d_ref := (DNA.from_string loaded);
+;;
+
+let load_string str _d_ref = 
+  _d_ref := (DNA.from_string str);
 ;;
 
 (* Main program where we show the console to the user.
@@ -120,14 +124,14 @@ let rec main () =
  * over a suffix array. *)
 let load_cfna_cmd =
   Command.basic 
-    ~summary:"Loads a CFNA file for analysis (without ./_data/)"
+    ~summary:"Loads a CFNA file for analysis (without ./_data/ and .cfna)"
     Command.Spec.(
       empty
       +> anon ("filename" %: file)
     )
     (fun filename () -> 
       Tools.heading ();
-      load_cfna filename;
+      load_cfna filename _data;
       print_string 
         "[STATUS] Indexing complete
         \n[INFO] Perfom analysis using the following commands.\n";
@@ -195,11 +199,31 @@ let lcp =
     Command.Spec.(empty)
     (fun () -> 
       print_string (
-        DNA.string_of_lcp 
-          (DNA.lcp_single (DNA.lcp_array_from_seq !_data)) _data
+        DNA.string_of_lcp_single
+          (DNA.lcp_single (DNA.lcp_array_from_seq !_data)) !_data
       );
       main ())
 ;;
+
+(* Subcommand 'lcp'. Searches for the longest common prefix in our
+ * indexed DNA sequence and returns the position. *)
+let lcp2 =
+  Command.basic ~summary:"Find LCP in two sequences (use filenames)"
+    Command.Spec.(empty +> anon ("file1" %: file) +>anon ("file2" %: file))
+    (fun file1 file2 () -> 
+      match parse_cfna file1, parse_cfna file2 with
+      | None, _ | _, None -> Tools.empty_data ();
+      | Some s1, Some s2 -> 
+        (load_string (s1 ^ "#" ^ s2) _data;
+        let double_sa = DNA.lcp_array_from_seq !_data in
+          print_string (
+            DNA.string_of_lcp_double
+              (DNA.lcp_single double_sa) !_data
+          ));
+
+      main ())
+;;
+
 (* To prevent empty subcommands to end the program *)
 let return =
   Command.basic ~summary:"" Command.Spec.(empty) (fun () -> main ())
@@ -212,6 +236,7 @@ _subcommands :=
         "commands", help; 
         "exit", exit_program; 
         "lcp", lcp;
+        "lcp2", lcp2;
         "load", load_cfna_cmd;
         "search", search;
         "", return;
