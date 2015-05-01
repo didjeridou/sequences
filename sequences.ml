@@ -120,7 +120,7 @@ let rec main () =
  * over a suffix array. *)
 let load_cfna_cmd =
   Command.basic 
-    ~summary:"Indexes a base DNA (.cfna) file to perform operations"
+    ~summary:"Loads a CFNA file for analysis (without ./_data/)"
     Command.Spec.(
       empty
       +> anon ("filename" %: file)
@@ -150,7 +150,7 @@ let run =
 
 let help =
   Command.basic 
-    ~summary:"List subcommands" Command.Spec.(empty)
+    ~summary:"Lists the available commands" Command.Spec.(empty)
     (fun () -> 
       Tools.avail_commands ();
       main ())
@@ -166,7 +166,7 @@ let exit_program =
 (* Subcommand 'data', lists the files available in our data
  * folder, ./_data *)
 let list_data =
-  Command.basic ~summary:"List the CFNA data in ./_data"
+  Command.basic ~summary:"Lists the data files in ./_data/"
     Command.Spec.(empty)
     (fun () -> 
       Tools.list_data ();
@@ -176,7 +176,7 @@ let list_data =
 (* Subcommand 'search STRING'. Searches for a string in our indexed
  * DNA sequence and returns the position. *)
 let search =
-  Command.basic ~summary:"Search for pattern"
+  Command.basic ~summary:"Search a STRING pattern in the loaded data"
     Command.Spec.(
       empty
       +> anon ("str" %: string)
@@ -191,7 +191,7 @@ let search =
 (* Subcommand 'lcp'. Searches for the longest common prefix in our
  * indexed DNA sequence and returns the position. *)
 let lcp =
-  Command.basic ~summary:"Find longest common prefix in indexed sequence"
+  Command.basic ~summary:"Find Longest Common Prefix in loaded sequence"
     Command.Spec.(empty)
     (fun () -> 
       print_string (

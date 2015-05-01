@@ -110,10 +110,13 @@ struct
 "
 === (sub) Command List ===
 
-  data          List the CFNA data in ./_data
-  search STR    Search the DNA for a certain string STR
-  lcp SEQ       Find Longest Common Prefix in DNA & file SEQ
-  exit          Find Longest Common Prefix in DNA & file SEQ
+  commands      List the available commands
+  data          List the data files in ./_data/
+  exit          Exit Sequences
+  load FILE     Load a CFNA file for analysis (files in ./_data/)
+  search STRING Search a STRING pattern in the loaded data
+  lcp           Find the LCP in the loaded data
+  lcp2 FILE     lcp2 FILE
 
 
 ";;
