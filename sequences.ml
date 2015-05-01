@@ -130,7 +130,6 @@ let load_cfna_cmd =
       +> anon ("filename" %: file)
     )
     (fun filename () -> 
-      Tools.heading ();
       load_cfna filename _data;
       print_string 
         "[STATUS] Indexing complete
