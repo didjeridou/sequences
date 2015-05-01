@@ -14,6 +14,7 @@ open Core.Std
 module type TOOLS =
 sig
   val get_version : unit -> string
+  val get_data_path : unit -> string
   val get_intro : unit -> string
   val get_summary : unit -> string
   val get_console : unit -> string
@@ -35,6 +36,7 @@ end
 module Tools: TOOLS =
 struct
   let get_version () = "0.03.9";;
+  let get_data_path () = "./_data/";;
 
   let get_intro () =
 "
@@ -73,9 +75,9 @@ struct
 
   let list_data () =
     let avail_files = 
-      (if (Sys.is_directory_exn "./_data")
+      (if (Sys.is_directory_exn (get_data_path ()))
         then 
-          let files_array = Sys.readdir "./_data" in
+          let files_array = Sys.readdir (get_data_path ()) in
             Array.fold_right 
               ~f:(fun s a -> (s^"\n-   ")^a) 
               files_array 
@@ -118,7 +120,7 @@ struct
                 ex: load ebola_r -> loads ./_data/ebola_r.cfna
   search STRING Search a STRING pattern in the loaded data
   lcp           Find the LCP in the loaded data
-  lcp2 FILE     lcp2 FILE
+  lcp2 FILE1 FILE2     Find the LCP of two sequences
 
 
 ";;

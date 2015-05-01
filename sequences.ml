@@ -67,7 +67,7 @@ let _subcommands =
  * Get the metadata, sets the _cfna metadata and get the string 
  * of ATCG to create the DNA.seq *)
 let parse_cfna file =
-  In_channel.with_file ("./_data/"^file^".cfna") ~f:(fun ic ->
+  In_channel.with_file ((Tools.get_data_path ())^file^".cfna") ~f:(fun ic ->
     _cfna := input_line ic;
     Tools.current_seq !_cfna;
     let atcg = input_line ic in 
@@ -170,7 +170,7 @@ let exit_program =
 (* Subcommand 'data', lists the files available in our data
  * folder, ./_data *)
 let list_data =
-  Command.basic ~summary:"Lists the data files in ./_data/"
+  Command.basic ~summary:("Lists the data files in "^(Tools.get_data_path ()))
     Command.Spec.(empty)
     (fun () -> 
       Tools.list_data ();

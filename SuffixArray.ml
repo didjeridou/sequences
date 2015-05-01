@@ -127,6 +127,7 @@ struct
             else
                 lcs (String.drop_prefix s1 1) (String.drop_prefix s2 1) (c+1)
 
+    (* Creates and LCP array of an SA *)
     let lcp_array_of_sarray (sarr: sarray) : (int * int * int * int) list =
         let rec lcp (sa: sarray) (index: int) =
             match List.nth sa 0, List.nth sa 1 with
@@ -135,21 +136,12 @@ struct
                 ((lcs s1 s2 0), i1, i2, index)::(lcp (List.drop sa 1) (index+1))
         in lcp sarr 0
 
+    (* Finds the LCP for a given LCP array *)
     let rec lcp_single (lst: (int * int * int * int) list) 
         : (int * int * int * int) option =
         match lst with
         | [] -> None
         | hd::tl -> max (Some hd) (lcp_single tl)
-
-(* 
-    let lcp_from_double_sa (double_seq: seq) =
-        let rec max_lcp (lcpa: seq) (lcp: int) : int =
-            match lcpa with
-            | [] -> 0
-            | hd1::hd2::tl ->
-                if hd1 = hd2 then max_lcp tl (max lcp hd1)
-                else max_lcp tl lcp
-        in max_lcp (SA.lcp_of_sarray double_seq) 0 *)
 
     let string_of_suffix s = s
     let string_of_index = string_of_int
